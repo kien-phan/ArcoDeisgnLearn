@@ -6,5 +6,8 @@
     "profile": "Profile",
     "result": "Result",
     "exception": "Exception",
-    "userCenter": "User Center"
+    "userCenter": "User Center",
+
+    "darkModeButtonTooltip": "Click to use Light mode",
+    "lightModeButtonTooltip": "Click to use Dark mode"
 }

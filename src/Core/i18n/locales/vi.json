@@ -6,5 +6,8 @@
     "profile": "Hồ sơ",
     "result": "Kết quả",
     "exception": "Ngoại lệ",
-    "userCenter": "Trung tâm người dùng"
+    "userCenter": "Trung tâm người dùng",
+
+    "darkModeButtonTooltip": "Chuyển sang Light mode",
+    "lightModeButtonTooltip": "Chuyển sang Dark mode"
 }

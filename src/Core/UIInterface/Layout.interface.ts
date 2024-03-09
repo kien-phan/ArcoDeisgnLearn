@@ -1,14 +1,9 @@
-// 1 item
-export interface DropListDataItemInterface {
-    key: string;
-    title: React.ReactNode;
-    handleClickFunction?: (...args: any[]) => void;
-}
-
 // 1 item with multiple level
-export interface DropListDataInterface {
+export interface LeftMenuInterface {
     key: string;
-    title: React.ReactNode;
-    handleClickFunction?: (...args: any[]) => void;
-    subList?: DropListDataInterface[]; // subList chứa các phần tử cùng kiểu DropListDataInterface
+    label: string;
+    icon?: React.ReactNode;
+    path?: string;
+    handleClickFunction?: () => void;
+    subList?: LeftMenuInterface[]; // subList chứa các phần tử cùng kiểu DropListDataInterface
 }
