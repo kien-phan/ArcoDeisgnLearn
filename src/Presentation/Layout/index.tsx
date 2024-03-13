@@ -54,7 +54,7 @@ function LayoutComponent() {
                     </div>
                 </Sider>
                 <Layout
-                    className={`pt-4 ${
+                    className={`pt-4 pe-2 ${
                         collapsed ? "ps-[60px]" : "ps-[290px]"
                     } transition-all`}
                 >

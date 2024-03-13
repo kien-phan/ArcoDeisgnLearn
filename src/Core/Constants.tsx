@@ -12,6 +12,7 @@ import {
 
 import Analysis from "src/Presentation/Analysis";
 import Dashboard from "src/Presentation/Dashboard";
+import ListSearchTable from "src/Presentation/ListSearchTable";
 import { LeftMenuInterface, translate } from "src/Core";
 
 export interface Routes {
@@ -24,7 +25,7 @@ export const PRIVATE_ROUTE: Routes[] = [
     { path: "/", element: <Dashboard /> },
     { path: "/dashboard/workplace", element: <Dashboard /> },
     { path: "/data-visualization/analysis", element: <Analysis /> },
-    { path: "/list/search-table", element: <Analysis /> },
+    { path: "/list/search-table", element: <ListSearchTable /> },
     { path: "/list/card-list", element: <Analysis /> },
     { path: "/form/step-form", element: <Analysis /> },
     { path: "/profile/basic-profile", element: <Analysis /> },

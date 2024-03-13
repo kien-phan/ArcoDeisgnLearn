@@ -2,42 +2,43 @@ import { Avatar } from "@arco-design/web-react";
 
 import DropDownComponent from "src/Core/Components/Dropdown";
 import DropList from "src/Core/Components/DropList";
-import { DropListDataInterface } from "src/Core";
+import { LeftMenuInterface } from "src/Core";
 
 function AvatarButton() {
-    const dropListData: DropListDataInterface[] = [
+    // DATAS
+    const dropListData: LeftMenuInterface[] = [
         {
-            title: "General User",
             key: "General User",
+            label: "General User",
             subList: [
                 {
-                    title: "Switch Role",
                     key: "Switch Role",
+                    label: "Switch Role",
                 },
             ],
         },
         {
-            title: "User Setting",
+            label: "User Setting",
             key: "User Setting",
         },
         {
-            title: "See more",
+            label: "See more",
             key: "See more",
             subList: [
                 {
-                    title: "Workplace",
+                    label: "Workplace",
                     key: "Workplace",
-                    subList: [{ key: "workplace2", title: "Workplace2" }],
+                    subList: [{ key: "workplace2", label: "Workplace2" }],
                 },
-                { title: "CardList", key: "CardList" },
+                { label: "CardList", key: "CardList" },
             ],
         },
         {
-            title: "d",
+            label: "d",
             key: "d",
         },
         {
-            title: "Log out",
+            label: "Log out",
             key: "Log Out",
         },
     ];

@@ -4,8 +4,10 @@ import { useState } from "react";
 import SkinModal from "src/Core/Components/Modal/SkinModal";
 
 function SkinButton() {
+    // ISVISIBLE
     const [isVisible, setIsVisible] = useState(false);
 
+    // HANDLE SET VISIBLE
     const handleSetVisible = (isVsb: boolean) => {
         setIsVisible(isVsb);
     };
