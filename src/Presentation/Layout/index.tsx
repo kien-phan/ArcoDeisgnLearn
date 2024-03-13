@@ -6,10 +6,12 @@ import { Outlet } from "react-router-dom";
 const Header = Layout.Header;
 const Content = Layout.Content;
 const Sider = Layout.Sider;
+const Footer = Layout.Footer;
 
 import HeaderComponent from "./Header";
 import SiderChildComponent from "./Sider";
 import useViewmodel from "./LayoutViewModel";
+import Breadcrumb from "src/Core/Components/BreadcrumbCpn";
 
 function LayoutComponent() {
     const {
@@ -19,7 +21,7 @@ function LayoutComponent() {
         siderWidth,
         handleCollapse,
         // handleMoving,
-        triggerButton,
+        TriggerButton,
     } = useViewmodel();
 
     useEffect(() => {
@@ -43,14 +45,28 @@ function LayoutComponent() {
                     //     directions: ["right"],
                     //     onMoving: handleMoving,
                     // }}
-                    trigger={triggerButton}
+                    trigger={null}
+                    className={`fixed top-0 bottom-0 left-0 pt-[60px]`}
                 >
-                    <SiderChildComponent />
+                    <div className="relative h-[calc(100vh_-_60px)]">
+                        <SiderChildComponent />
+                        {TriggerButton}
+                    </div>
                 </Sider>
-                <Layout className={`pt-4 px-5`}>
+                <Layout
+                    className={`pt-4 ${
+                        collapsed ? "ps-[60px]" : "ps-[290px]"
+                    } transition-all`}
+                >
+                    <Breadcrumb />
                     <Content>
                         <Outlet />
                     </Content>
+                    <Footer
+                        className={`flex flex-row justify-center items-center my-6`}
+                    >
+                        Footer
+                    </Footer>
                 </Layout>
             </Layout>
         </Layout>

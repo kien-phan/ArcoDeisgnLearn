@@ -42,8 +42,6 @@ function LayoutViewModel() {
     }
   };*/
 
-    console.log("re");
-
     //HANDLE CALL API
     const getFacts = async () => {
         setFacts(
@@ -52,24 +50,23 @@ function LayoutViewModel() {
     };
 
     // TRIGGER BUTTON
-    const triggerButton = useMemo(
+    const TriggerButton = useMemo(
         () => (
             <div
-                className={`w-full flex flex-row ${
-                    siderWidth > collapsedWidth
-                        ? "justify-end"
-                        : "justify-center"
-                }`}
+                className={`absolute bottom-3 ${
+                    collapsed ? "left-0 right-0" : "right-3"
+                } flex flex-row justify-center`}
             >
                 <Button
-                    className={siderWidth > collapsedWidth ? "mr-4" : ""}
+                    className={collapsed ? "" : "mr-4"}
                     shape="round"
                     type="default"
                     icon={collapsed ? <IconMenuUnfold /> : <IconMenuFold />}
+                    onClick={() => handleCollapse(!collapsed)}
                 />
             </div>
         ),
-        [collapsed, siderWidth]
+        [collapsed]
     );
 
     return {
@@ -79,7 +76,7 @@ function LayoutViewModel() {
         siderWidth,
         handleCollapse,
         // handleMoving,
-        triggerButton,
+        TriggerButton,
     };
 }
 

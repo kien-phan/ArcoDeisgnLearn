@@ -48,13 +48,13 @@ interface Props {
 }
 function DropList({ data, mode, defaultOpenKey, defaultSelectedKey }: Props) {
     const navigate = useNavigate();
-    console.log(data);
 
     return (
         <Menu
             defaultOpenKeys={[`${defaultOpenKey}`]}
             defaultSelectedKeys={[`${defaultSelectedKey}`]}
             mode={mode}
+            className={`h-full overflow-x-auto`}
         >
             {renderMenuItems(data ?? [], navigate)}
         </Menu>

@@ -1,4 +1,4 @@
-// 1 item with multiple level
+// multiple level
 export interface LeftMenuInterface {
     key: string;
     label: string;
