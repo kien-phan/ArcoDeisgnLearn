@@ -21,10 +21,10 @@ function ListSearchTableContainer() {
         {
             collectionId: "2",
             collectionName: "Collection Name 2",
-            contentGenre: "Video",
+            contentGenre: "Image",
             filterMethod: "filterMethod 2",
             contentQuantity: 1842,
-            creationTime: "2024-02-23 25:38:36",
+            creationTime: "2024-02-23 21:38:36",
             status: "not ok",
         },
         {
@@ -33,79 +33,79 @@ function ListSearchTableContainer() {
             contentGenre: "Video",
             filterMethod: "filterMethod 3",
             contentQuantity: 1394,
-            creationTime: "2024-03-31 25:38:36",
+            creationTime: "2024-03-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "4",
             collectionName: "Collection Name 4",
-            contentGenre: "Video",
-            filterMethod: "filterMethod 4",
+            contentGenre: "Image",
+            filterMethod: "filterMethod 2",
             contentQuantity: 1494,
-            creationTime: "2024-04-31 25:38:36",
+            creationTime: "2024-04-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "5",
             collectionName: "Collection Name 5",
             contentGenre: "Video",
-            filterMethod: "filterMethod 5",
+            filterMethod: "filterMethod 1",
             contentQuantity: 1594,
-            creationTime: "2024-05-31 25:38:36",
+            creationTime: "2024-05-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "6",
             collectionName: "Collection Name 6",
-            contentGenre: "Video",
-            filterMethod: "filterMethod 6",
+            contentGenre: "Image",
+            filterMethod: "filterMethod 2",
             contentQuantity: 1694,
-            creationTime: "2024-06-31 25:38:36",
+            creationTime: "2024-06-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "7",
             collectionName: "Collection Name 7",
             contentGenre: "Video",
-            filterMethod: "filterMethod 7",
+            filterMethod: "filterMethod 1",
             contentQuantity: 1794,
-            creationTime: "2024-07-31 25:38:36",
+            creationTime: "2024-07-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "8",
             collectionName: "Collection Name 8",
-            contentGenre: "Video",
-            filterMethod: "filterMethod 8",
+            contentGenre: "Image",
+            filterMethod: "filterMethod 2",
             contentQuantity: 1894,
-            creationTime: "2024-08-31 25:38:36",
+            creationTime: "2024-08-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "9",
             collectionName: "Collection Name 9",
             contentGenre: "Video",
-            filterMethod: "filterMethod 9",
+            filterMethod: "filterMethod 1",
             contentQuantity: 1994,
-            creationTime: "2024-09-31 25:38:36",
+            creationTime: "2024-09-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "10",
             collectionName: "Collection Name 10",
-            contentGenre: "Video",
-            filterMethod: "filterMethod 10",
+            contentGenre: "Image",
+            filterMethod: "filterMethod 1",
             contentQuantity: 10494,
-            creationTime: "2024-10-31 25:38:36",
+            creationTime: "2024-10-31 21:38:36",
             status: "ok",
         },
         {
             collectionId: "11",
             collectionName: "Collection Name 11",
             contentGenre: "Video",
-            filterMethod: "filterMethod 11",
+            filterMethod: "filterMethod 2",
             contentQuantity: 11494,
-            creationTime: "2024-11-31 25:38:36",
+            creationTime: "2024-11-31 21:38:36",
             status: "ok",
         },
     ]);
@@ -125,7 +125,7 @@ function ListSearchTableContainer() {
 
     const persistedData = useMemo(() => data, []);
 
-    // CHANGE PAGE
+    // HANDLE CHANGE PAGE
     const handleChangeTable = (pagination: PaginationProps) => {
         const { current, pageSize } = pagination || {};
         setLoading(true);
@@ -147,11 +147,19 @@ function ListSearchTableContainer() {
         }, 1000);
     };
 
+    // HANDLE SET FILTERED DATAS
+    const handleSetFilteredDatas = (newData: ListSearchTableItem[]) => {
+        setData(newData);
+    };
+
     return (
         <div className="bg-[color:var(--color-bg-1)] p-5">
             <div className="flex flex-col justify-start items-start">
                 <Typography className={`mb-2`}>Search Table</Typography>
-                <FilterCpn />
+                <FilterCpn
+                    persistedData={persistedData}
+                    handleSetFilteredDatas={handleSetFilteredDatas}
+                />
                 <Divider />
                 <div className="w-full">
                     <TableCpn

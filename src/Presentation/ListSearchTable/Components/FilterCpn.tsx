@@ -7,33 +7,86 @@ import {
 } from "@arco-design/web-react";
 import { CalendarValue } from "@arco-design/web-react/es/Calendar/interface";
 import { IconRefresh, IconSearch } from "@arco-design/web-react/icon";
-import { memo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
+import {
+    ListSearchTableItem,
+    filterByCollectionId,
+    filterByCollectionName,
+    filterByContentGenre,
+    filterByCreationTime,
+    filterByFilterMethod,
+    filterByStatus,
+} from "src/Core";
 const Option = Select.Option;
 
-function FilterCpn() {
+interface Props {
+    handleSetFilteredDatas: (newData: ListSearchTableItem[]) => void;
+    persistedData: ListSearchTableItem[];
+}
+
+function FilterCpn({ persistedData, handleSetFilteredDatas }: Props) {
     // STATE
     const [collectionId, setCollectionId] = useState("");
-    const [contentGenre, setContentGenre] = useState("");
+    const [contentGenre, setContentGenre] = useState([]);
     const [creationTime, setCreationTime] = useState<CalendarValue[]>([]);
     const [collectionName, setCollectionName] = useState("");
     const [filterMethod, setFilterMethod] = useState([]);
     const [status, setStatus] = useState([]);
 
     //HANDLE SEARCH
-    const handleSearch = () => {
-        console.log(creationTime);
-    };
+    const handleSearch = useCallback(() => {
+        const filteredByCollectionId = filterByCollectionId(
+            persistedData,
+            collectionId
+        );
+        const filteredByCollectionName = filterByCollectionName(
+            filteredByCollectionId,
+            collectionName
+        );
+        const filteredByContentGenre = filterByContentGenre(
+            filteredByCollectionName,
+            contentGenre
+        );
+        const filteredByFilterMethod = filterByFilterMethod(
+            filteredByContentGenre,
+            filterMethod
+        );
+        const filteredByStatus = filterByStatus(filteredByFilterMethod, status);
+        const filteredByCreationTime = filterByCreationTime(
+            filteredByStatus,
+            creationTime[0] ? creationTime[0].toString() : "",
+            creationTime[1] ? creationTime[1].toString() : ""
+        );
+
+        handleSetFilteredDatas(filteredByCreationTime);
+    }, [
+        collectionId,
+        collectionName,
+        contentGenre,
+        creationTime,
+        filterMethod,
+        handleSetFilteredDatas,
+        persistedData,
+        status,
+    ]);
+
+    // CONTENT GENRE, FILTER METHOD, STATUS
+    const contentGenresFilterOption = useMemo(() => ["Video", "Image"], []);
+    const filterMethodFilterOption = useMemo(
+        () => ["filterMethod 1", "filterMethod 2"],
+        []
+    );
+    const statusFilterOption = useMemo(() => ["ok", "not ok"], []);
 
     // HANDLE RESET
     const handleReset = () => {
-        console.log("reset");
-
         setCollectionId("");
         setCollectionName("");
-        setContentGenre("");
+        setContentGenre([]);
         setCreationTime(["", ""]);
         setFilterMethod([]);
         setStatus([]);
+        handleSetFilteredDatas(persistedData);
     };
 
     return (
@@ -69,9 +122,11 @@ function FilterCpn() {
                             placeholder="all"
                             allowClear
                         >
-                            <Option value="Option1">Option 1</Option>
-                            <Option value="Option2">Option 2</Option>
-                            <Option value="Option3">Option 3</Option>
+                            {contentGenresFilterOption?.map((item) => (
+                                <Option key={item} value={item}>
+                                    {item}
+                                </Option>
+                            ))}
                         </Select>
                     </div>
                     <div className={`grid grid-cols-12`}>
@@ -117,9 +172,11 @@ function FilterCpn() {
                             placeholder="all"
                             allowClear
                         >
-                            <Option value="Option1">Option 1</Option>
-                            <Option value="Option2">Option 2</Option>
-                            <Option value="Option3">Option 3</Option>
+                            {filterMethodFilterOption?.map((item) => (
+                                <Option key={item} value={item}>
+                                    {item}
+                                </Option>
+                            ))}
                         </Select>
                     </div>
                     <div className={`grid grid-cols-12`}>
@@ -137,9 +194,11 @@ function FilterCpn() {
                             placeholder="all"
                             allowClear
                         >
-                            <Option value="Option1">Option 1</Option>
-                            <Option value="Option2">Option 2</Option>
-                            <Option value="Option3">Option 3</Option>
+                            {statusFilterOption?.map((item) => (
+                                <Option key={item} value={item}>
+                                    {item}
+                                </Option>
+                            ))}
                         </Select>
                     </div>
                 </div>
