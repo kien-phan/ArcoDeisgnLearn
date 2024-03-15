@@ -1,28 +1,13 @@
-import { useMemo } from "react";
-
 import Logo from "src/Core/Components/Logo";
-import DarkModeButton from "./Components/DarkModeButton";
-import LocaleButton from "./Components/LocaleButton";
 import RightSideList from "./Components/RightSideList";
 
 import { HeaderRightSideItemInterface } from "src/Core";
 
-function HeaderLayoutComponent() {
-    // ITEMS
-    const items: HeaderRightSideItemInterface[] = useMemo(
-        () => [
-            {
-                key: "localeButtonHeader",
-                content: <LocaleButton />,
-            },
+interface Props {
+    items: HeaderRightSideItemInterface[];
+}
 
-            {
-                key: "darkModeButtonHeader",
-                content: <DarkModeButton />,
-            },
-        ],
-        []
-    );
+function HeaderLayoutComponent({ items }: Props) {
     return (
         <div className={`h-full flex flex-row justify-between items-center`}>
             <div className="ps-[20px]">

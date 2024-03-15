@@ -1,4 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "@arco-design/web-react";
 import { IconMenuFold, IconMenuUnfold } from "@arco-design/web-react/icon";
 
@@ -6,6 +8,11 @@ import { Fact } from "src/Domain/Model/Fact";
 import FactAPIDataSourceImpl from "src/Data/DataSource/Api/FactAPIDataSourceImpl";
 import { FactRepositoryImpl } from "src/Data/Repository/FactRepositoryImpl";
 import { GetFacts } from "src/Domain/UseCase/Fact/GetFacts";
+
+import { HeaderRightSideItemInterface } from "src/Core";
+import LocaleButton from "src/Presentation/Layout/Header/Components/LocaleButton";
+import DarkModeButton from "src/Presentation/Layout/Header/Components/DarkModeButton";
+import AvatarButton from "src/Presentation/Layout/Header/Components/AvatarButton";
 
 function LayoutViewModel() {
     // STATE
@@ -15,11 +22,11 @@ function LayoutViewModel() {
     const [siderWidth, setSiderWidth] = useState(normalWidth);
     const [facts, setFacts] = useState<Fact[]>([]);
 
-    //impl
+    //IMPL
     const factsDataSourceImpl = new FactAPIDataSourceImpl();
     const factsRepositoryImpl = new FactRepositoryImpl(factsDataSourceImpl);
 
-    // use cases
+    // USE CASES
     const getFactsUseCase = new GetFacts(factsRepositoryImpl);
 
     // HANDLE COLLAPSE
@@ -69,6 +76,28 @@ function LayoutViewModel() {
         [collapsed]
     );
 
+    // HEADER ITEMS
+    const headerItems: HeaderRightSideItemInterface[] = useMemo(
+        () => [
+            {
+                key: "localeButtonHeader",
+                content: <LocaleButton />,
+            },
+
+            {
+                key: "darkModeButtonHeader",
+                content: <DarkModeButton />,
+            },
+            {
+                key: "avatarButtonHeader",
+                content: <AvatarButton />,
+            },
+        ],
+        []
+    );
+
+    const navigate = useNavigate();
+
     return {
         facts,
         getFacts,
@@ -77,6 +106,8 @@ function LayoutViewModel() {
         handleCollapse,
         // handleMoving,
         TriggerButton,
+        headerItems,
+        navigate,
     };
 }
 
