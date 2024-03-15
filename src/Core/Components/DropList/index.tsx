@@ -33,7 +33,6 @@ function renderMenuItems(
                         item?.handleClickFunction();
                     }
                 }}
-                className={`flex flex-row items-center`}
             >
                 {item?.icon} {item?.label}
             </Menu.Item>

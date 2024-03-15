@@ -3,23 +3,8 @@ import { Avatar } from "@arco-design/web-react";
 import DropDownComponent from "src/Core/Components/Dropdown";
 import DropList from "src/Core/Components/DropList";
 import { LeftMenuInterface } from "src/Core";
-import { IconPoweroff } from "@arco-design/web-react/icon";
-import { useNavigate } from "react-router-dom";
-
-import useViewModel from "src/Presentation/Login/LoginContainerViewModel";
-import { memo, useEffect, useState } from "react";
-import { User } from "src/Domain/Model/User";
 
 function AvatarButton() {
-    // STATE
-    const [user, setUser] = useState<User>();
-
-    // FROM VIEWMODEL
-    const { handleSetUser, handleGetUser } = useViewModel();
-
-    // NAVIGATE
-    const navigate = useNavigate();
-
     // DATAS
     const dropListData: LeftMenuInterface[] = [
         {
@@ -55,37 +40,21 @@ function AvatarButton() {
         {
             label: "Log out",
             key: "Log Out",
-            icon: <IconPoweroff className="mr-0" />,
-            handleClickFunction: () => {
-                handleSetUser({
-                    username: "",
-                    password: undefined,
-                });
-                navigate("/login");
-            },
         },
     ];
 
-    // USE EFFECT
-    useEffect(() => {
-        (async () => {
-            const userGot = await handleGetUser();
-            setUser(userGot);
-        })();
-    }, []);
+    const dropList = <DropList data={dropListData} mode="pop" />;
 
     return (
-        <DropDownComponent
-            dropList={<DropList data={dropListData} mode="pop" />}
-        >
+        <DropDownComponent dropList={dropList}>
             <Avatar
                 size={32}
                 className={`bg-[color:var(--color-secondary)] text-[color:var(--color-text-2)] cursor-pointer text-sm`}
             >
-                {user?.username[0]?.toUpperCase()}
+                A
             </Avatar>
         </DropDownComponent>
     );
 }
 
-export default memo(AvatarButton);
+export default AvatarButton;

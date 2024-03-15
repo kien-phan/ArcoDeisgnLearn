@@ -14,8 +14,6 @@ import Analysis from "src/Presentation/Analysis";
 import Dashboard from "src/Presentation/Dashboard";
 import ListSearchTable from "src/Presentation/ListSearchTable";
 import { LeftMenuInterface, translate } from "src/Core";
-import LoginForm from "src/Presentation/Login/Components/LoginForm";
-import RegisterForm from "src/Presentation/Login/Components/RegisterForm";
 
 export interface Routes {
     path: string;
@@ -24,6 +22,7 @@ export interface Routes {
 
 // PRIVATE ROUTE
 export const PRIVATE_ROUTE: Routes[] = [
+    { path: "/", element: <Dashboard /> },
     { path: "/dashboard/workplace", element: <Dashboard /> },
     { path: "/data-visualization/analysis", element: <Analysis /> },
     { path: "/list/search-table", element: <ListSearchTable /> },
@@ -37,19 +36,6 @@ export const PRIVATE_ROUTE: Routes[] = [
     { path: "/exception/500", element: <Analysis /> },
     { path: "/user-center/user-info", element: <Analysis /> },
     { path: "/user-center/user-setting", element: <Analysis /> },
-];
-
-// PUBLIC ROUTE
-export const PUBLIC_ROUTE: Routes[] = [
-    { path: "/", element: <LoginForm /> },
-    {
-        path: "/login",
-        element: <LoginForm />,
-    },
-    {
-        path: "/register",
-        element: <RegisterForm />,
-    },
 ];
 
 export const GetLeftMenuDatas = (locale: string) => {

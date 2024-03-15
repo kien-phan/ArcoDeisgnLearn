@@ -7,7 +7,7 @@ import TableCpn from "./Components/TableCpn";
 import { ListSearchTableItem } from "src/Core";
 
 function ListSearchTableContainer() {
-    // TABLE DATA STATE
+    // TABLE DATA
     const [data, setData] = useState<ListSearchTableItem[]>([
         {
             collectionId: "1",

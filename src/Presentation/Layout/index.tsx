@@ -10,12 +10,10 @@ const Footer = Layout.Footer;
 
 import HeaderComponent from "./Header";
 import SiderChildComponent from "./Sider";
-import useViewModel from "./LayoutViewModel";
-import useLoginViewModel from "src/Presentation/Login/LoginContainerViewModel";
+import useViewmodel from "./LayoutViewModel";
 import Breadcrumb from "src/Core/Components/BreadcrumbCpn";
 
 function LayoutComponent() {
-    // FROM VIEWMODELS
     const {
         facts,
         getFacts,
@@ -24,29 +22,17 @@ function LayoutComponent() {
         handleCollapse,
         // handleMoving,
         TriggerButton,
-        headerItems,
-        navigate,
-    } = useViewModel();
+    } = useViewmodel();
 
-    const { handleGetUser } = useLoginViewModel();
-
-    // USE EFFECT
     useEffect(() => {
-        (async () => {
-            const userGot = await handleGetUser();
-            if (!userGot?.username) {
-                navigate("/login");
-            }
-
-            await getFacts();
-        })();
+        getFacts();
     }, []);
     console.log(facts);
 
     return (
         <Layout className={`min-h-[100vh] bg-[color:var(--color-fill-2)]`}>
             <Header className="bg-[color:var(--color-bg-2)] text-center h-[60px] fixed left-0 top-0 right-0 z-50 border-b border-solid border-b-[color:var(--color-border)]">
-                <HeaderComponent items={headerItems} />
+                <HeaderComponent />
             </Header>
             <Layout className="flex pt-[60px] bg-[color:var(--color-fill-2)]">
                 <Sider
