@@ -9,10 +9,14 @@ import { useNavigate } from "react-router-dom";
 import useViewModel from "src/Presentation/Login/LoginContainerViewModel";
 import { memo, useEffect, useState } from "react";
 import { User } from "src/Domain/Model/User";
+import { useUser } from "src/Core/Components/UserContext";
 
 function AvatarButton() {
+    // CONTEXT
+    const { setUser } = useUser();
+
     // STATE
-    const [user, setUser] = useState<User>();
+    const [user, setUserState] = useState<User>();
 
     // FROM VIEWMODEL
     const { handleSetUser, handleGetUser } = useViewModel();
@@ -56,11 +60,12 @@ function AvatarButton() {
             label: "Log out",
             key: "Log Out",
             icon: <IconPoweroff className="mr-0" />,
-            handleClickFunction: () => {
-                handleSetUser({
+            handleClickFunction: async () => {
+                const userSet = await handleSetUser({
                     username: "",
                     password: undefined,
                 });
+                setUser(userSet);
                 navigate("/login");
             },
         },
@@ -70,7 +75,7 @@ function AvatarButton() {
     useEffect(() => {
         (async () => {
             const userGot = await handleGetUser();
-            setUser(userGot);
+            setUserState(userGot);
         })();
     }, []);
 

@@ -3,6 +3,7 @@ import { useAppSelector } from "./Data/DataSource/Api/LocalDB/reduxHooks";
 import { GetLocale } from "src/Core";
 import { useLayoutEffect } from "react";
 import AppRouter from "./AppRouter";
+import { UserProvider } from "src/Core/Components/UserContext";
 
 function App() {
     // LOCALE
@@ -18,7 +19,9 @@ function App() {
 
     return (
         <ConfigProvider locale={GetLocale(locale)}>
-            <AppRouter />
+            <UserProvider>
+                <AppRouter />
+            </UserProvider>
         </ConfigProvider>
     );
 }

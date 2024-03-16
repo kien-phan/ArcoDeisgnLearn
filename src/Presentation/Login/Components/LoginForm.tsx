@@ -11,7 +11,10 @@ import { IconFacebook, IconGoogle } from "@arco-design/web-react/icon";
 
 import useViewModel from "../LoginContainerViewModel";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "src/Core/Components/UserContext";
 function LoginForm() {
+    // FROM CONTEXT
+    const { setUser } = useUser();
     // NAVIGATE
     const navigate = useNavigate();
 
@@ -28,6 +31,7 @@ function LoginForm() {
         console.log(userSet);
 
         if (userSet.username) {
+            setUser(userSet);
             navigate("/dashboard/workplace");
         }
     };

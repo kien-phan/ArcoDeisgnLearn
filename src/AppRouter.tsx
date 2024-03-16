@@ -8,31 +8,37 @@ import Login from "./Presentation/Login";
 
 import useViewModel from "src/Presentation/Login/LoginContainerViewModel";
 import { User } from "src/Domain/Model/User";
+import { useUser } from "./Core/Components/UserContext";
 
 function AppRouter() {
-    // // STATE
-    const [user, setUser] = useState<User>();
+    // CONTEXT
+    const { user } = useUser();
+
+    // STATE
+    const [userState, setUserState] = useState<User>();
+
     // FROM VIEWMODEL
     const { handleGetUser } = useViewModel();
 
     useEffect(() => {
         (async () => {
             const userGot = await handleGetUser();
-            setUser(userGot);
+            setUserState(userGot);
         })();
-    }, []);
+    }, [user]);
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route element={<Layout />}>
-                    {PRIVATE_ROUTE?.map((route, index) => (
-                        <Route
-                            key={index}
-                            path={route?.path}
-                            element={route?.element}
-                        /> // => Nên tạo 1 constant để export PRIVATE ROUTE như vậy sẽ dễ quản lý hơn
-                    ))}
+                    {(user?.username || userState?.username) &&
+                        PRIVATE_ROUTE?.map((route, index) => (
+                            <Route
+                                key={index}
+                                path={route?.path}
+                                element={route?.element}
+                            /> // => Nên tạo 1 constant để export PRIVATE ROUTE như vậy sẽ dễ quản lý hơn
+                        ))}
                 </Route>
 
                 <Route element={<Login />}>
