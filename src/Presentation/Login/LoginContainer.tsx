@@ -1,14 +1,10 @@
 import { useEffect, useMemo } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { HeaderRightSideItemInterface } from "src/Core";
 import HeaderLayoutComponent from "src/Presentation/Layout/Header";
 import LocaleButton from "src/Presentation/Layout/Header/Components/LocaleButton";
 import DarkModeButton from "src/Presentation/Layout/Header/Components/DarkModeButton";
-import useViewModel from "./LoginContainerViewModel";
 function LoginContainer() {
-    // FROM VIEWMODEL
-    const { handleGetUser } = useViewModel();
-
     // HEADER ITEMS
     const headerItems: HeaderRightSideItemInterface[] = useMemo(
         () => [
@@ -25,19 +21,9 @@ function LoginContainer() {
         []
     );
 
-    // NAVIGATE
-    const navigate = useNavigate();
-
     // USE EFFECT
     useEffect(() => {
-        (async () => {
-            const userGot = await handleGetUser();
-            console.log(userGot);
-
-            if (userGot?.username) {
-                navigate("/dashboard/workplace");
-            }
-        })();
+        (async () => {})();
     }, []);
 
     return (

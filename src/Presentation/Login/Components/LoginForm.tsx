@@ -78,7 +78,7 @@ function LoginForm() {
                     ]}
                 >
                     <Input.Password
-                        className={``}
+                        className=""
                         size="large"
                         defaultVisibility={false}
                         placeholder="Password"
@@ -120,10 +120,10 @@ function LoginForm() {
                 Or Sign in with
             </Divider>
             <div className="flex flex-row flex-wrap justify-center items-center gap-4">
-                <Button className={``} icon={<IconGoogle />}>
+                <Button className="" icon={<IconGoogle />}>
                     Google
                 </Button>
-                <Button className={``} icon={<IconFacebook />}>
+                <Button className="" icon={<IconFacebook />}>
                     Facebook
                 </Button>
             </div>

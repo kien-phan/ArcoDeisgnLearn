@@ -11,35 +11,23 @@ const Footer = Layout.Footer;
 import HeaderComponent from "./Header";
 import SiderChildComponent from "./Sider";
 import useViewModel from "./LayoutViewModel";
-import useLoginViewModel from "src/Presentation/Login/LoginContainerViewModel";
 import Breadcrumb from "src/Core/Components/BreadcrumbCpn";
 
 function LayoutComponent() {
     // FROM VIEWMODELS
     const {
         facts,
-        getFacts,
         collapsed,
         siderWidth,
         handleCollapse,
         // handleMoving,
         TriggerButton,
         headerItems,
-        navigate,
     } = useViewModel();
-
-    const { handleGetUser } = useLoginViewModel();
 
     // USE EFFECT
     useEffect(() => {
-        (async () => {
-            const userGot = await handleGetUser();
-            if (!userGot?.username) {
-                navigate("/login");
-            }
-
-            await getFacts();
-        })();
+        (async () => {})();
     }, []);
     console.log(facts);
 
