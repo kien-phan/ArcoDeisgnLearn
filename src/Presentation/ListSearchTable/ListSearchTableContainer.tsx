@@ -5,10 +5,9 @@ import { Divider, PaginationProps, Typography } from "@arco-design/web-react";
 import FilterCpn from "./Components/FilterCpn";
 import TableCpn from "./Components/TableCpn";
 import { ListSearchTableItem } from "src/Core";
-import WhiteContainer from "src/Core/Components/WhiteContainer";
 
 function ListSearchTableContainer() {
-    // TABLE DATA STATE
+    // TABLE DATA
     const [data, setData] = useState<ListSearchTableItem[]>([
         {
             collectionId: "1",
@@ -124,7 +123,6 @@ function ListSearchTableContainer() {
     // ISLOADING
     const [loading, setLoading] = useState(false);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const persistedData = useMemo(() => data, []);
 
     // HANDLE CHANGE PAGE
@@ -155,9 +153,9 @@ function ListSearchTableContainer() {
     };
 
     return (
-        <WhiteContainer>
+        <div className="bg-[color:var(--color-bg-1)] p-5">
             <div className="flex flex-col justify-start items-start">
-                <Typography className="mb-2">Search Table</Typography>
+                <Typography className={`mb-2`}>Search Table</Typography>
                 <FilterCpn
                     persistedData={persistedData}
                     handleSetFilteredDatas={handleSetFilteredDatas}
@@ -172,7 +170,7 @@ function ListSearchTableContainer() {
                     />
                 </div>
             </div>
-        </WhiteContainer>
+        </div>
     );
 }
 

@@ -1,8 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import tailwindConfig from "../../../tailwind.config";
-
+import { useCallback, useMemo, useState } from "react";
 import { Button } from "@arco-design/web-react";
 import { IconMenuFold, IconMenuUnfold } from "@arco-design/web-react/icon";
 
@@ -11,45 +7,40 @@ import FactAPIDataSourceImpl from "src/Data/DataSource/Api/FactAPIDataSourceImpl
 import { FactRepositoryImpl } from "src/Data/Repository/FactRepositoryImpl";
 import { GetFacts } from "src/Domain/UseCase/Fact/GetFacts";
 
-import { HeaderRightSideItemInterface } from "src/Core";
-import LocaleButton from "src/Presentation/Layout/Header/Components/LocaleButton";
-import DarkModeButton from "src/Presentation/Layout/Header/Components/DarkModeButton";
-import AvatarButton from "src/Presentation/Layout/Header/Components/AvatarButton";
-
 function LayoutViewModel() {
-    // STATEs
-    const [collapsed, setCollapsed] = useState(true);
-    const [siderWidth, setSiderWidth] = useState(
-        tailwindConfig.theme.extend.spacing.SIDERCOLLAPSEWIDTH
-    );
-
+    // STATE
+    const collapsedWidth = 60;
+    const normalWidth = 280;
+    const [collapsed, setCollapsed] = useState(false);
+    const [siderWidth, setSiderWidth] = useState(normalWidth);
     const [facts, setFacts] = useState<Fact[]>([]);
 
-    // REFs
-    const headerRef = useRef<HTMLDivElement>(null);
-    const breadcrumbRef = useRef<HTMLDivElement>(null);
-
-    //IMPLs
+    //impl
     const factsDataSourceImpl = new FactAPIDataSourceImpl();
     const factsRepositoryImpl = new FactRepositoryImpl(factsDataSourceImpl);
 
-    // USE CASES
+    // use cases
     const getFactsUseCase = new GetFacts(factsRepositoryImpl);
 
     // HANDLE COLLAPSE
-    const handleCollapse = useCallback(
-        (collapsedd: boolean, type: "clickTrigger" | "responsive") => {
-            if (type === "clickTrigger") {
-                setCollapsed(collapsedd);
-                setSiderWidth(
-                    collapsedd
-                        ? tailwindConfig.theme.extend.spacing.SIDERCOLLAPSEWIDTH
-                        : tailwindConfig.theme.extend.spacing.SIDERNORMALWIDTH
-                );
-            }
-        },
-        []
-    );
+    const handleCollapse = useCallback((collapsed: boolean) => {
+        setCollapsed(collapsed);
+        setSiderWidth(collapsed ? collapsedWidth : normalWidth);
+    }, []);
+
+    // HANDLE MOVING
+    /*const handleMoving = (
+    _e: MouseEvent,
+    size: { width: number; height: number }
+  ) => {
+    if (size.width > collapsedWidth) {
+      setSiderWidth(size.width);
+      setCollapsed(!(size.width > collapsedWidth + 20));
+    } else {
+      setSiderWidth(collapsedWidth);
+      setCollapsed(true);
+    }
+  };*/
 
     //HANDLE CALL API
     const getFacts = async () => {
@@ -59,47 +50,24 @@ function LayoutViewModel() {
     };
 
     // TRIGGER BUTTON
-    const triggerButton = useMemo(
+    const TriggerButton = useMemo(
         () => (
             <div
-                className={`absolute bottom-3 flex flex-row justify-center ${
+                className={`absolute bottom-3 ${
                     collapsed ? "left-0 right-0" : "right-3"
-                }`}
+                } flex flex-row justify-center`}
             >
                 <Button
                     className={collapsed ? "" : "mr-4"}
                     shape="round"
                     type="default"
                     icon={collapsed ? <IconMenuUnfold /> : <IconMenuFold />}
-                    onClick={() => handleCollapse(!collapsed, "clickTrigger")}
+                    onClick={() => handleCollapse(!collapsed)}
                 />
             </div>
         ),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [collapsed]
     );
-
-    // HEADER ITEMS
-    const headerItems: HeaderRightSideItemInterface[] = useMemo(
-        () => [
-            {
-                key: "locale-button-header",
-                content: <LocaleButton />,
-            },
-
-            {
-                key: "darkMode-button-header",
-                content: <DarkModeButton />,
-            },
-            {
-                key: "avatar-button-header",
-                content: <AvatarButton />,
-            },
-        ],
-        []
-    );
-
-    const navigate = useNavigate();
 
     return {
         facts,
@@ -107,11 +75,8 @@ function LayoutViewModel() {
         collapsed,
         siderWidth,
         handleCollapse,
-        triggerButton,
-        headerItems,
-        navigate,
-        headerRef,
-        breadcrumbRef,
+        // handleMoving,
+        TriggerButton,
     };
 }
 

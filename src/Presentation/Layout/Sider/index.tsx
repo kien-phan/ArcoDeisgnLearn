@@ -13,6 +13,9 @@ function SiderChildComponent() {
     const path = useLocation().pathname;
     const pathArray = useMemo(() => path.split("/"), [path]);
 
+    // NAVIGATE
+    // const navigate = useNavigate();
+
     // LOCALE
     const locale = useAppSelector((state) => state?.common?.locale);
 

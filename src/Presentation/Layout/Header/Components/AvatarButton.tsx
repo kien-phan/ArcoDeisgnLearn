@@ -1,28 +1,14 @@
 import { Avatar } from "@arco-design/web-react";
-import { IconPoweroff } from "@arco-design/web-react/icon";
-import { memo } from "react";
-import { useNavigate } from "react-router-dom";
-import { LeftMenuInterface, ROUTES } from "src/Core";
+
 import DropDownComponent from "src/Core/Components/Dropdown";
 import DropList from "src/Core/Components/DropList";
-import {
-    useAppDispatch,
-    useAppSelector,
-} from "src/Data/DataSource/Api/LocalDB/reduxHooks";
-import { logoutUser } from "src/Data/DataSource/Api/LocalDB/Slices/AuthSlice";
+import { LeftMenuInterface } from "src/Core";
 
 function AvatarButton() {
-    // REDUX
-    const user = useAppSelector((state) => state?.auth?.user);
-    const dispatch = useAppDispatch();
-
-    // NAVIGATE
-    const navigate = useNavigate();
-
     // DATAS
     const dropListData: LeftMenuInterface[] = [
         {
-            key: "general-user",
+            key: "General User",
             label: "General User",
             subList: [
                 {
@@ -32,19 +18,19 @@ function AvatarButton() {
             ],
         },
         {
-            key: "user-setting",
             label: "User Setting",
+            key: "User Setting",
         },
         {
-            key: "see-more",
             label: "See more",
+            key: "See more",
             subList: [
                 {
-                    key: "workplace",
                     label: "Workplace",
-                    subList: [{ key: "workplace-2", label: "Workplace2" }],
+                    key: "Workplace",
+                    subList: [{ key: "workplace2", label: "Workplace2" }],
                 },
-                { key: "card-list", label: "CardList" },
+                { label: "CardList", key: "CardList" },
             ],
         },
         {
@@ -52,28 +38,23 @@ function AvatarButton() {
             key: "d",
         },
         {
-            key: "log-out",
-            label: "Log Out",
-            icon: <IconPoweroff className="mr-0" />,
-            handleClickFunction: () => {
-                dispatch(logoutUser());
-                navigate(ROUTES.LOGIN);
-            },
+            label: "Log out",
+            key: "Log Out",
         },
     ];
 
+    const dropList = <DropList data={dropListData} mode="pop" />;
+
     return (
-        <DropDownComponent
-            dropList={<DropList data={dropListData} mode="pop" />}
-        >
+        <DropDownComponent dropList={dropList}>
             <Avatar
                 size={32}
-                className="bg-[color:var(--color-secondary)] text-[color:var(--color-text-2)] cursor-pointer text-sm"
+                className={`bg-[color:var(--color-secondary)] text-[color:var(--color-text-2)] cursor-pointer text-sm`}
             >
-                {user?.username[0]?.toUpperCase()}
+                A
             </Avatar>
         </DropDownComponent>
     );
 }
 
-export default memo(AvatarButton);
+export default AvatarButton;

@@ -10,70 +10,62 @@ const Footer = Layout.Footer;
 
 import HeaderComponent from "./Header";
 import SiderChildComponent from "./Sider";
-import useViewModel from "./LayoutViewModel";
+import useViewmodel from "./LayoutViewModel";
 import Breadcrumb from "src/Core/Components/BreadcrumbCpn";
-import { ELEMENT_ID } from "src/Core";
 
 function LayoutComponent() {
-    // FROM VIEWMODELS
     const {
+        facts,
         getFacts,
         collapsed,
         siderWidth,
         handleCollapse,
-        triggerButton,
-        headerItems,
-    } = useViewModel();
+        // handleMoving,
+        TriggerButton,
+    } = useViewmodel();
 
-    // USE EFFECT
     useEffect(() => {
-        (async () => await getFacts())();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        getFacts();
     }, []);
+    console.log(facts);
 
     return (
-        <Layout className="min-h-[100vh] bg-[color:var(--color-fill-2)]">
-            <Header
-                id={ELEMENT_ID.HEADER}
-                className="bg-[color:var(--color-bg-2)] text-center h-HEADERHEIGHT fixed left-0 top-0 right-0 z-50 border-b border-solid border-b-[color:var(--color-border)]"
-            >
-                <HeaderComponent items={headerItems} />
+        <Layout className={`min-h-[100vh] bg-[color:var(--color-fill-2)]`}>
+            <Header className="bg-[color:var(--color-bg-2)] text-center h-[60px] fixed left-0 top-0 right-0 z-50 border-b border-solid border-b-[color:var(--color-border)]">
+                <HeaderComponent />
             </Header>
-            <Layout className="flex pt-HEADERHEIGHT bg-[color:var(--color-fill-2)]">
+            <Layout className="flex pt-[60px] bg-[color:var(--color-fill-2)]">
                 <Sider
                     breakpoint="lg"
                     collapsible
                     onCollapse={handleCollapse}
                     collapsed={collapsed}
                     width={siderWidth}
+                    // resizeBoxProps={{
+                    //     directions: ["right"],
+                    //     onMoving: handleMoving,
+                    // }}
                     trigger={null}
-                    collapsedWidth={siderWidth}
-                    className="fixed top-0 bottom-0 left-0 pt-HEADERHEIGHT"
+                    className={`fixed top-0 bottom-0 left-0 pt-[60px]`}
                 >
-                    <div
-                        id={ELEMENT_ID.SIDER}
-                        className="relative h-SIDERHEIGHT [&_.arco-menu-collapse]:w-full"
-                    >
+                    <div className="relative h-[calc(100vh_-_60px)]">
                         <SiderChildComponent />
-                        {triggerButton}
+                        {TriggerButton}
                     </div>
                 </Sider>
                 <Layout
-                    className={`pe-STANDARDMARGINANDPADDING pb-STANDARDMARGINANDPADDING transition-all ${
-                        collapsed
-                            ? "ps-CONTENTPADDINGSTARTCOLLAPSE"
-                            : "ps-CONTENTPADDINGSTART"
-                    }`}
+                    className={`pt-4 pe-2 ${
+                        collapsed ? "ps-[60px]" : "ps-[290px]"
+                    } transition-all`}
                 >
                     <Breadcrumb />
                     <Content>
                         <Outlet />
                     </Content>
                     <Footer
-                        id={ELEMENT_ID?.FOOTER}
-                        className="mt-2 text-xs uppercase flex flex-row justify-center items-center"
+                        className={`flex flex-row justify-center items-center my-6`}
                     >
-                        version 0.0.0
+                        Footer
                     </Footer>
                 </Layout>
             </Layout>
