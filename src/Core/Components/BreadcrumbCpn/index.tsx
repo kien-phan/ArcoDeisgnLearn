@@ -4,6 +4,7 @@ import {
     GetLeftMenuDatas,
     LeftMenuInterface,
     GetBreadCrumbArray,
+    ELEMENT_ID,
 } from "src/Core";
 import { useAppSelector } from "src/Data/DataSource/Api/LocalDB/reduxHooks";
 
@@ -30,19 +31,26 @@ function BreadcrumbCpn() {
         [dropDatas, path]
     );
 
+    console.log(MenuList);
+
     return (
-        <Breadcrumb className={`mb-4`}>
-            <BreadcrumbItem>
-                {MenuList[0]?.icon || <IconCheck />}
-            </BreadcrumbItem>
-            {MenuList
-                ? MenuList.map((item) => (
-                      <BreadcrumbItem key={item?.key}>
-                          {item?.label}
-                      </BreadcrumbItem>
-                  ))
-                : "Error"}
-        </Breadcrumb>
+        <div
+            id={ELEMENT_ID?.BREADCRUMB}
+            className="bg-[color:var(--color-bg-2)] w-full my-BREADCRUMBMARGINY px-2 py-3 flex flex-row justify-start items-center"
+        >
+            <Breadcrumb>
+                <BreadcrumbItem>
+                    {MenuList[0]?.icon || <IconCheck />}
+                </BreadcrumbItem>
+                {MenuList
+                    ? MenuList?.map((item) => (
+                          <BreadcrumbItem key={item?.key}>
+                              {item?.label}
+                          </BreadcrumbItem>
+                      ))
+                    : "Error"}
+            </Breadcrumb>
+        </div>
     );
 }
 

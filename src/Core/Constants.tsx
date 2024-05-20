@@ -1,166 +1,161 @@
-import { ReactElement } from "react";
 import {
-    IconApps,
-    IconCheckCircle,
     IconDashboard,
-    IconExclamationCircle,
-    IconFile,
     IconList,
     IconSettings,
     IconUser,
 } from "@arco-design/web-react/icon";
 
-import Analysis from "src/Presentation/Analysis";
 import Dashboard from "src/Presentation/Dashboard";
 import ListSearchTable from "src/Presentation/ListSearchTable";
 import { LeftMenuInterface, translate } from "src/Core";
+import LoginForm from "src/Presentation/Login/Components/LoginForm";
+import RegisterForm from "src/Presentation/Login/Components/RegisterForm";
+import ListUserManage from "src/Presentation/ListUserManage";
+import UserSetting from "src/Presentation/UserSetting";
+import FormContainer from "src/Presentation/Form/FormContainer";
+import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
 
-export interface Routes {
-    path: string;
-    element: ReactElement<any, any>;
-}
+// ROUTES
+export const ROUTES = {
+    DASHBOARD: "/dashboard",
+    LIST: {
+        USER_MANAGE: "/list/user-manage",
+        SEARCH_TABLE: "/list/search-table",
+        CARD_LIST: "/list/card-list",
+    },
+    FORM: "/form",
+    USER: {
+        USER_SETTING: "/user/user-setting",
+        USER_INFO: "/user/user-info",
+    },
+    ROOT: "/",
+    LOGIN: "/login",
+    REGISTER: "/register",
+};
 
 // PRIVATE ROUTE
-export const PRIVATE_ROUTE: Routes[] = [
-    { path: "/", element: <Dashboard /> },
-    { path: "/dashboard/workplace", element: <Dashboard /> },
-    { path: "/data-visualization/analysis", element: <Analysis /> },
-    { path: "/list/search-table", element: <ListSearchTable /> },
-    { path: "/list/card-list", element: <Analysis /> },
-    { path: "/form/step-form", element: <Analysis /> },
-    { path: "/profile/basic-profile", element: <Analysis /> },
-    { path: "/result/success", element: <Analysis /> },
-    { path: "/result/error", element: <Analysis /> },
-    { path: "/exception/403", element: <Analysis /> },
-    { path: "/exception/404", element: <Analysis /> },
-    { path: "/exception/500", element: <Analysis /> },
-    { path: "/user-center/user-info", element: <Analysis /> },
-    { path: "/user-center/user-setting", element: <Analysis /> },
+export const PRIVATE_ROUTE = [
+    { path: ROUTES.DASHBOARD, element: <Dashboard /> },
+    { path: ROUTES.LIST.USER_MANAGE, element: <ListUserManage /> },
+    { path: ROUTES.LIST.SEARCH_TABLE, element: <ListSearchTable /> },
+    { path: ROUTES.USER.USER_SETTING, element: <UserSetting /> },
+    { path: ROUTES.USER.USER_INFO, element: <UserInfoContainer /> },
+    { path: ROUTES.FORM, element: <FormContainer /> },
 ];
 
+// PUBLIC ROUTE
+export const PUBLIC_ROUTE = [
+    { path: ROUTES.ROOT, element: <LoginForm /> },
+    {
+        path: ROUTES.LOGIN,
+        element: <LoginForm />,
+    },
+    {
+        path: ROUTES.REGISTER,
+        element: <RegisterForm />,
+    },
+];
+
+// MENU DATAS
 export const GetLeftMenuDatas = (locale: string) => {
     const data: LeftMenuInterface[] = [
         {
-            key: "Dashboard",
-            icon: <IconDashboard />,
+            key: "dashboard",
+            icon: <IconDashboard className="text-xl" />,
             label: translate("dashboard", locale),
+            path: ROUTES.DASHBOARD,
+        },
+        {
+            key: "list",
+            icon: <IconList className="text-xl" />,
+            label: translate("list.list", locale),
             subList: [
                 {
-                    key: "Workplace",
-                    label: translate("workplace", locale),
-                    path: "/dashboard/workplace",
+                    key: "user-manage",
+                    label: translate("list.userManage", locale),
+                    path: ROUTES.LIST.USER_MANAGE,
+                },
+                {
+                    key: "search-table",
+                    label: translate("list.searchTable", locale),
+                    path: ROUTES.LIST.SEARCH_TABLE,
                 },
             ],
         },
         {
-            key: "Data-Visualization",
-            icon: <IconApps />,
-            label: translate("dataVisualization", locale),
-            subList: [
-                {
-                    key: "Analysis",
-                    label: translate("Analysis", locale),
-                    path: "/data-visualization/analysis",
-                },
-            ],
-        },
-        {
-            key: "List",
-            icon: <IconList />,
-            label: translate("list", locale),
-            subList: [
-                {
-                    key: "Search-Table",
-                    label: translate("searchTable", locale),
-                    path: "/list/search-table",
-                },
-                {
-                    key: "Card-List",
-                    label: translate("cardList", locale),
-                    path: "/list/card-list",
-                },
-            ],
-        },
-        {
-            key: "Form",
+            key: "form",
             label: translate("form", locale),
-            icon: <IconSettings />,
-            subList: [
-                {
-                    key: "Step-Form",
-                    label: translate("stepForm", locale),
-                    path: "/form/step-form",
-                },
-            ],
+            icon: <IconSettings className="text-xl" />,
+            path: ROUTES?.FORM,
         },
         {
-            key: "Profile",
-            label: translate("profile", locale),
-            icon: <IconFile />,
+            key: "user",
+            label: translate("userPages.userCenter", locale),
+            icon: <IconUser className="text-xl" />,
             subList: [
                 {
-                    key: "Basic-Profile",
-                    label: translate("basicProfile", locale),
-                    path: "/profile/basic-profile",
-                },
-            ],
-        },
-        {
-            key: "Result",
-            label: translate("result", locale),
-            icon: <IconCheckCircle />,
-            subList: [
-                {
-                    key: "Success",
-                    label: translate("success", locale),
-                    path: "/result/success",
+                    key: "user-setting",
+                    label: translate("userPages.userSetting", locale),
+                    path: ROUTES.USER.USER_SETTING,
                 },
                 {
-                    key: "Error",
-                    label: translate("error", locale),
-                    path: "/result/error",
-                },
-            ],
-        },
-        {
-            key: "Exception",
-            label: translate("exception", locale),
-            icon: <IconExclamationCircle />,
-            subList: [
-                {
-                    key: "403",
-                    label: translate("403", locale),
-                    path: "/exception/403",
-                },
-                {
-                    key: "404",
-                    label: translate("404", locale),
-                    path: "/exception/404",
-                },
-                {
-                    key: "500",
-                    label: translate("500", locale),
-                    path: "/exception/500",
-                },
-            ],
-        },
-        {
-            key: "User-Center",
-            label: translate("userCenter", locale),
-            icon: <IconUser />,
-            subList: [
-                {
-                    key: "User-Info",
-                    label: translate("userInfo", locale),
-                    path: "/user-center/user-info",
-                },
-                {
-                    key: "User-Setting",
-                    label: translate("userSetting", locale),
-                    path: "/user-center/user-setting",
+                    key: "user-info",
+                    label: translate("userPages.userInfo", locale),
+                    path: ROUTES.USER.USER_INFO,
                 },
             ],
         },
     ];
     return data;
 };
+
+// FORM RULE MESSAGES
+export const FORMRULEMESSAGES = {
+    LOGIN: {
+        USERNAME_REQUIRED: "Username is required",
+        USERNAME_MAXLENGTH: "Username must has less than 16 characters",
+        PASSWORD_REQUIRED: "Password is required",
+        PASSWORD_MINLENGTH: "Password must has at least 6 characters",
+        PASSWORD_MAXLENGTH: "Password must has less than 16 characters",
+    },
+};
+
+// ASSET FILE PATHs
+export const ASSETFILEPATHS = {
+    USERLISTMOCKDATA: "/userList.json",
+};
+
+// ELEMENT_ID
+export const ELEMENT_ID = {
+    HEADER: "headerElementId",
+    FOOTER: "footerElementId",
+    SIDER: "siderElementId",
+    BREADCRUMB: "breadcrumbElementId",
+    TABLEFILTER: "tableFilterElementId",
+    TABLE: "userManageTableContainer",
+    CERTIFICATIONRECORDSTABLE: "certificationRecordsTable",
+    USERSETTINGINFO: "userSettingInfo",
+    USERSETTINGTABCONTAINER: "userSettingTabContainer",
+};
+// TANSTACK QUERY KEYS
+export const TANSTACKQUERYKEYS = {
+    MOCKUSERS: "mockUsers",
+};
+
+// MOCKUSER STATUS
+export const MOCKUSERSTATUS = {
+    ACTIVE: "Active",
+    LOCKED: "Locked",
+};
+
+// STEPFORM SCREEN STR
+export const STEPFORMSTR = {};
+
+// MESSAGE STATUS
+export const MESSAGESTATUS = {
+    NORMAL: "normal",
+    INFO: "info",
+    SUCCESS: "success",
+    WARNING: "warning",
+    ERROR: "error",
+} as const;

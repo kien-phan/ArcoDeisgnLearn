@@ -98,22 +98,20 @@ function RightDashboardComponent() {
                     <Button type="text">See More</Button>
                 </div>
                 <div className="grid grid-cols-3 gap-4">
-                    {shortcutButtons.map((button, index) => (
+                    {shortcutButtons?.map((button, index) => (
                         <div
                             className="flex flex-row justify-center items-center"
                             key={index}
                         >
                             <Button
-                                className={`flex flex-col justify-center items-center h-auto p-2 group hover:!bg-transparent`}
+                                className="flex flex-col justify-center items-center h-auto p-2 group hover:!bg-transparent"
                                 type="text"
                             >
                                 <div className="!bg-[color:var(--color-fill-2)] px-3 py-2 rounded-md">
                                     {button?.icon}
                                 </div>
                                 <span className="text-[12px] ">
-                                    <Typography
-                                        className={`group-hover:text-blue-500`}
-                                    >
+                                    <Typography className="group-hover:text-blue-500">
                                         {button?.label}
                                     </Typography>
                                 </span>
@@ -125,19 +123,17 @@ function RightDashboardComponent() {
                 <div className="">
                     <Typography>Recent</Typography>
                     <div className="grid grid-cols-3 gap-4">
-                        {recentButtons.map((button, index) => (
+                        {recentButtons?.map((button, index) => (
                             <Button
                                 key={index}
-                                className={`flex flex-col justify-center items-center h-auto p-2 group hover:!bg-transparent`}
+                                className="flex flex-col justify-center items-center h-auto p-2 group hover:!bg-transparent"
                                 type="text"
                             >
                                 <div className="!bg-[color:var(--color-fill-2)] px-3 py-2 rounded-md">
                                     {button?.icon}
                                 </div>
                                 <span className="text-[12px] ">
-                                    <Typography
-                                        className={`group-hover:text-blue-500`}
-                                    >
+                                    <Typography className="group-hover:text-blue-500">
                                         {button?.label}
                                     </Typography>
                                 </span>
@@ -146,10 +142,10 @@ function RightDashboardComponent() {
                     </div>
                 </div>
             </div>
-            <div className="mt-4">
+            <div className="mt-2">
                 <RightSideImageCarousel />
             </div>
-            <div className="mt-4 bg-[color:var(--color-bg-1)] flex flex-col p-5">
+            <div className="mt-2 bg-[color:var(--color-bg-1)] flex flex-col p-5">
                 <div className="flex flex-row items-center justify-between">
                     <Typography>Announcement</Typography>
                     <Button type="text">See More</Button>
@@ -166,7 +162,7 @@ function RightDashboardComponent() {
                     ))}
                 </div>
             </div>
-            <div className="mt-4 bg-[color:var(--color-bg-1)] flex flex-col p-5">
+            <div className="mt-2 bg-[color:var(--color-bg-1)] flex flex-col p-5">
                 <div className="flex flex-row items-center justify-between">
                     <Typography>Document</Typography>
                     <Button type="text">See More</Button>
