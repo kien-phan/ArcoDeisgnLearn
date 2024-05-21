@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: var(--color-bg-1);
+    color: var(--color-text-1);
+  }
+
+.arco-dropdown-menu {
+  overflow: hidden;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Độ rộng của thanh cuộn */
+  height: 6px;
+}
+
+/* Nút cuộn (mũi tên cuộn lên và xuống) */
+::-webkit-scrollbar-button {
+  display: none; /* Ẩn nút cuộn */
+}
+
+/* Track của thanh cuộn (phần nền) */
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);;
+}
+
+/* Nút kéo của thanh cuộn (thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4); /* Màu của thumb khi hover */
+}
+
+/* FIREFOX */
+.element-with-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/*  */
+/* .table-demo-resizable-column .react-resizable {
+} */
+
+.table-demo-resizable-column .react-resizable-handle {
+  position: absolute;
+  width: 0px;
+  height: 100%;
+  bottom: 0;
+  right: -5px;
+  cursor: col-resize;
+  z-index: 1;
+}
+
+/* ARCO FORM LABEL */
+label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
