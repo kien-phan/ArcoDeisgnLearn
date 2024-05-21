@@ -4,39 +4,24 @@ import { User } from "src/Domain/Model/User";
 const AuthSlice = createSlice({
     name: "auth",
     initialState: {
-        user: {
-            isLoggedIn: false,
-            username: "",
-            password: "",
-            isSavePassword: false,
-        },
+        user: {} as User,
     },
 
     reducers: {
         loginUser: (state, action: PayloadAction<User>) => {
             return {
                 ...state,
-                user: {
-                    isLoggedIn: true,
-                    username: action?.payload?.username,
-                    password: action?.payload?.password || "",
-                    isSavePassword: action.payload.isSavePassword,
-                },
+                user: action?.payload
             };
         },
         logoutUser: (state) => {
             return {
                 ...state,
-                user: {
-                    isLoggedIn: false,
-                    username: state.user.isSavePassword
-                        ? state.user.username
-                        : "",
-                    password: state.user.isSavePassword
-                        ? state.user.password
-                        : "",
-                    isSavePassword: state.user.isSavePassword,
-                },
+                user: state.user.isSavePassword ? {
+                    user_name: state?.user?.user_name,
+                    pass_word: state?.user?.pass_word,
+                    isSavePassword: state?.user?.isSavePassword
+                } as User : {} as User
             };
         },
     },

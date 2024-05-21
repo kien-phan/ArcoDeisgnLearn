@@ -15,6 +15,12 @@ import UserSetting from "src/Presentation/UserSetting";
 import FormContainer from "src/Presentation/Form/FormContainer";
 import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
 
+// URLs
+export const BASE_URL = "https://sys.api.dev.adsai.asia/api";
+export const URLS = {
+    LOGIN: BASE_URL + "/auth/login",
+};
+
 // ROUTES
 export const ROUTES = {
     DASHBOARD: "/dashboard",
@@ -114,6 +120,7 @@ export const FORMRULEMESSAGES = {
     LOGIN: {
         USERNAME_REQUIRED: "Username is required",
         USERNAME_MAXLENGTH: "Username must has less than 16 characters",
+        USERNAME_MINLENGTH: "Username must has at least 6 characters",
         PASSWORD_REQUIRED: "Password is required",
         PASSWORD_MINLENGTH: "Password must has at least 6 characters",
         PASSWORD_MAXLENGTH: "Password must has less than 16 characters",

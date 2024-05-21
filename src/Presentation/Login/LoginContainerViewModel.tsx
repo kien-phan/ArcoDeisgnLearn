@@ -1,31 +1,29 @@
-import UserAPIDataSourceImpl from "src/Data/DataSource/Api/UserAPIDataSourceImpl";
-import { UserRepositoryImpl } from "src/Data/Repository/UsesrRepositoryImpl";
-import { User } from "src/Domain/Model/User";
-
-import { GetUser } from "src/Domain/UseCase/User/GetUser";
-import { SetUser } from "src/Domain/UseCase/User/SetUser";
+import { URLS } from "src/Core";
+import AuthDataSourceImpl from "src/Data/DataSource/Api/AuthDataSourceImpl";
+import { AuthRepositoryImpl } from "src/Data/Repository/AuthRepositoryImpl";
+import { UserLoginRequest } from "src/Domain/Model/User";
+import { LoginUseCase } from "src/Domain/UseCase/Auth/Login";
 
 function LoginContainerViewModel() {
-    // IMPL
-    const userAPIDataSourceImpl = new UserAPIDataSourceImpl();
-    const userRepositoryImpl = new UserRepositoryImpl(userAPIDataSourceImpl);
+    // DATASOURCE
+    const authDataSourceImpl = new AuthDataSourceImpl();
+
+    // REPOSITORY
+    const authRepositoryImpl = new AuthRepositoryImpl(authDataSourceImpl);
 
     // USE CASES
-    const getUserUseCase = new GetUser(userRepositoryImpl);
-    const setUserUseCase = new SetUser(userRepositoryImpl);
+    const loginUseCase = new LoginUseCase(authRepositoryImpl);
 
-    // HANDLE USER WITH LOCALDB
-    const handleGetUser = async () => {
-        const userGot = await getUserUseCase.invoke();
-        return userGot;
+    // HANDLE
+    const handleLogin = async (userLoginRequest: UserLoginRequest) => {
+        const userResp = await loginUseCase.invoke(
+            URLS?.LOGIN,
+            userLoginRequest
+        );
+        return userResp;
     };
 
-    const handleSetUser = async (user: User) => {
-        const userSet = await setUserUseCase.invoke(user);
-        return userSet;
-    };
-
-    return { handleGetUser, handleSetUser };
+    return { handleLogin };
 }
 
 export default LoginContainerViewModel;

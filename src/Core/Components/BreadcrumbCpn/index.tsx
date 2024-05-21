@@ -31,8 +31,6 @@ function BreadcrumbCpn() {
         [dropDatas, path]
     );
 
-    console.log(MenuList);
-
     return (
         <div
             id={ELEMENT_ID?.BREADCRUMB}

@@ -56,3 +56,10 @@ body {
   cursor: col-resize;
   z-index: 1;
 }
+
+/* ARCO FORM LABEL */
+label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

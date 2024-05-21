@@ -70,7 +70,7 @@ function AvatarButton() {
                 size={32}
                 className="bg-[color:var(--color-secondary)] text-[color:var(--color-text-2)] cursor-pointer text-sm"
             >
-                {user?.username[0]?.toUpperCase()}
+                {user?.data?.user_info?.full_name[0].toUpperCase()}
             </Avatar>
         </DropDownComponent>
     );

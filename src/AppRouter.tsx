@@ -27,7 +27,9 @@ function AppRouter() {
                         <Route
                             key={index}
                             path={route?.path}
-                            element={route?.element}
+                            element={
+                                <AuthChecker>{route?.element}</AuthChecker>
+                            }
                         />
                     ))}
                 </Route>

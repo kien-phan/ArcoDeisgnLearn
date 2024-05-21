@@ -1,26 +1,23 @@
-import { useMemo } from "react";
+import { Button, Checkbox, Form, Input, Space } from "@arco-design/web-react";
 import { useNavigate } from "react-router-dom";
 
-import {
-    Button,
-    Checkbox,
-    Divider,
-    Form,
-    Input,
-    Space,
-    Typography,
-} from "@arco-design/web-react";
-import { IconFacebook, IconGoogle } from "@arco-design/web-react/icon";
-
+import { FORMRULEMESSAGES, ROUTES } from "src/Core";
+import { loginUser } from "src/Data/DataSource/Api/LocalDB/Slices/AuthSlice";
 import {
     useAppDispatch,
     useAppSelector,
 } from "src/Data/DataSource/Api/LocalDB/reduxHooks";
-import { loginUser } from "src/Data/DataSource/Api/LocalDB/Slices/AuthSlice";
-
-import { FORMRULEMESSAGES, ROUTES } from "src/Core";
+import useViewModel from "../LoginContainerViewModel";
+import { showMessage } from "src/Core/Helpers";
+import { useState } from "react";
 
 function LoginForm() {
+    // LOADING
+    const [loading, setLoading] = useState(false);
+
+    // VIEWMODEL
+    const { handleLogin } = useViewModel();
+
     // NAVIGATE
     const navigate = useNavigate();
 
@@ -30,126 +27,158 @@ function LoginForm() {
 
     // HANDLE SUBMIT
     const handleSubmit = async (values: any) => {
-        dispatch(
-            loginUser({
-                username: values?.username,
-                password: values?.isSavePassword ? values?.password : "",
-                isSavePassword: values?.isSavePassword,
-            })
-        );
-        navigate(ROUTES.DASHBOARD);
+        setLoading(true);
+        const userResp = await handleLogin({
+            user_name: values?.user_name,
+            pass_word: values?.pass_word,
+        });
+
+        if (userResp.success) {
+            console.log(userResp);
+
+            dispatch(
+                loginUser({
+                    ...userResp,
+                    isSavePassword: values?.isSavePassword ? true : false,
+                    user_name: values?.isSavePassword ? values?.user_name : "",
+                    pass_word: values?.isSavePassword ? values?.pass_word : "",
+                })
+            );
+            navigate(ROUTES?.DASHBOARD);
+        } else {
+            showMessage("error", userResp.message);
+        }
+        setLoading(false);
     };
 
-    // UI
-    const SignInButtons: React.ReactNode[] = useMemo(
-        () => [
-            <Button className="" icon={<IconGoogle />}>
-                Google
-            </Button>,
-            <Button className="" icon={<IconFacebook />}>
-                Facebook
-            </Button>,
-        ],
-        []
-    );
-
     return (
-        <div className="p-4 mb-4 basis-2/3 lg:basis-1/3 max-w-[520px] flex flex-col items-center justify-start bg-[color:var(--color-bg-2)] rounded-lg">
-            <h1 className="text-[32px] font-bold m-8">LOGIN</h1>
-            <Form
-                className="flex flex-col justify-start items-center gap-2 flex-wrap"
-                onSubmit={handleSubmit}
-                initialValues={{
-                    username: user?.username,
-                    password: user?.password,
-                    isSavePassword: user?.isSavePassword,
-                }}
-            >
-                <Form.Item
-                    field="username"
-                    className="[&_.arco-input]:rounded-md justify-center w-full"
-                    rules={[
-                        {
-                            required: true,
-                            message: FORMRULEMESSAGES.LOGIN.USERNAME_REQUIRED,
-                        },
-                        {
-                            maxLength: 16,
-                            message: FORMRULEMESSAGES.LOGIN.USERNAME_MAXLENGTH,
-                        },
-                    ]}
-                >
-                    <Input
-                        className="flex-1 w-full"
-                        size="large"
-                        placeholder="Enter Username"
-                        type="text"
-                    />
-                </Form.Item>
-                <Form.Item
-                    field="password"
-                    className="[&_.arco-input-inner-wrapper]:rounded-md justify-center"
-                    rules={[
-                        {
-                            required: true,
-                            message: FORMRULEMESSAGES.LOGIN.PASSWORD_REQUIRED,
-                        },
-                        {
-                            minLength: 6,
-                            message: FORMRULEMESSAGES.LOGIN.PASSWORD_MINLENGTH,
-                        },
-                        {
-                            maxLength: 16,
-                            message: FORMRULEMESSAGES.LOGIN.PASSWORD_MAXLENGTH,
-                        },
-                    ]}
-                >
-                    <Input.Password
-                        className=""
-                        size="large"
-                        defaultVisibility={false}
-                        placeholder="Password"
-                    />
-                </Form.Item>
-                <Form.Item className="flex flex-row justify-center items-center">
-                    <Space className="flex flex-row flex-wrap justify-center md:justify-between items-center">
+        <div className="bg-[color:var(--color-white)] p-8 rounded-2xl shadow-xl">
+            <div className="flex flex-col justify-start items-center">
+                <div className="flex flex-row justify-center items-center">
+                    <h2 className="text-xl font-bold mb-8">
+                        Login to your account
+                    </h2>
+                </div>
+                <div>
+                    <Form
+                        layout="vertical"
+                        className="flex flex-col justify-start items-center gap-2 flex-wrap"
+                        onSubmit={handleSubmit}
+                        initialValues={{
+                            user_name: user?.user_name,
+                            pass_word: user?.pass_word,
+                            isSavePassword: user?.isSavePassword,
+                        }}
+                    >
                         <Form.Item
-                            className="flex flex-row m-0 justify-center items-center"
-                            defaultChecked
-                            field="isSavePassword"
-                            triggerPropName="checked"
+                            label="Username"
+                            field="user_name"
+                            className="[&_.arco-input]:rounded-md justify-center w-full"
+                            rules={[
+                                {
+                                    required: true,
+                                    message:
+                                        FORMRULEMESSAGES.LOGIN
+                                            .USERNAME_REQUIRED,
+                                },
+                                {
+                                    minLength: 6,
+                                    message:
+                                        FORMRULEMESSAGES.LOGIN
+                                            .PASSWORD_MINLENGTH,
+                                },
+                                {
+                                    maxLength: 16,
+                                    message:
+                                        FORMRULEMESSAGES.LOGIN
+                                            .USERNAME_MAXLENGTH,
+                                },
+                            ]}
                         >
-                            <Checkbox className="text-xs md:text-sm">
-                                Save Password
-                            </Checkbox>
+                            <Input
+                                className="flex-1 w-full"
+                                size="large"
+                                placeholder="Enter Username"
+                                type="text"
+                            />
                         </Form.Item>
-                        <Button
-                            type="text"
-                            className="text-xs md:text-sm pe-0 ps-0"
+
+                        <Form.Item
+                            label="Password"
+                            field="pass_word"
+                            className="[&_.arco-input-inner-wrapper]:rounded-md justify-center"
+                            rules={[
+                                {
+                                    required: true,
+                                    message:
+                                        FORMRULEMESSAGES.LOGIN
+                                            .PASSWORD_REQUIRED,
+                                },
+                                {
+                                    minLength: 6,
+                                    message:
+                                        FORMRULEMESSAGES.LOGIN
+                                            .PASSWORD_MINLENGTH,
+                                },
+                                {
+                                    maxLength: 16,
+                                    message:
+                                        FORMRULEMESSAGES.LOGIN
+                                            .PASSWORD_MAXLENGTH,
+                                },
+                            ]}
                         >
-                            Forgot Password?
-                        </Button>
-                    </Space>
-                </Form.Item>
-                <Form.Item className="justify-center m-0">
-                    <Button className="w-full" type="primary" htmlType="submit">
-                        Sign in
-                    </Button>
-                </Form.Item>
-            </Form>
-            <Divider orientation={"center"} type="horizontal">
-                Or Sign in with
-            </Divider>
-            <div className="flex flex-row flex-wrap justify-center items-center gap-4">
-                {SignInButtons?.map((buttonNode, index) => (
-                    <div key={index}>{buttonNode}</div>
-                ))}
-            </div>
-            <div className="flex flex-row flex-wrap gap-1 justify-center items-center mt-4 mb-8">
-                <Typography>Don't have an account?</Typography>
-                <Button className="m-0 p-0" type="text">
-                    Register now
-                </Button>
+                            <Input.Password
+                                className="w-[350px]"
+                                size="large"
+                                defaultVisibility={false}
+                                placeholder="Password"
+                            />
+                        </Form.Item>
+                        <Form.Item className="flex flex-row justify-end items-center">
+                            <Space className="flex flex-row flex-wrap justify-center md:justify-between items-center">
+                                <Form.Item
+                                    className="flex flex-row m-0 justify-center items-center"
+                                    defaultChecked
+                                    field="isSavePassword"
+                                    triggerPropName="checked"
+                                >
+                                    <Checkbox className="text-xs md:text-sm">
+                                        {({
+                                            checked,
+                                        }: {
+                                            checked: boolean;
+                                        }) => {
+                                            return (
+                                                <div className="flex flex-row items-center gap-STANDARDMARGINANDPADDING">
+                                                    <div className="w-3 h-3 inline-flex items-center justify-center rounded-sm border border-solid border-black">
+                                                        <div
+                                                            className={`${
+                                                                checked &&
+                                                                "bg-black"
+                                                            } w-2 h-2 rounded-sm`}
+                                                        ></div>
+                                                    </div>
+                                                    <span>Save Password</span>
+                                                </div>
+                                            );
+                                        }}
+                                    </Checkbox>
+                                </Form.Item>
+                            </Space>
+                        </Form.Item>
+                        <Form.Item className="justify-center m-0">
+                            <Button
+                                className="w-full h-10 !rounded-xl !bg-black"
+                                type="primary"
+                                htmlType="submit"
+                                disabled={loading}
+                            >
+                                Login
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </div>
             </div>
         </div>
     );

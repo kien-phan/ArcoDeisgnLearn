@@ -21,7 +21,7 @@ abstract class Http {
     async post(
         url: string,
         body: object | FormData,
-        headers: AxiosHeaders,
+        headers?: AxiosHeaders,
         isMultipart = false
     ) {
         return await this.axiosInstance.post(url, body, {
