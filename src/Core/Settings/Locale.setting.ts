@@ -5,7 +5,7 @@ import { Locale } from "@arco-design/web-react/es/locale/interface";
 export function GetLocale(locale: string): Locale {
     switch (locale) {
         case "vi-VN":
-            return viVN;
+            return {...viVN, ColorPicker: {}};
         case "en-US":
             return enUS;
         default:

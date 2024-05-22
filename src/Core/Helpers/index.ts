@@ -1,3 +1,6 @@
+import CryptoJS from 'crypto-js';
+import { Message, MessageProps } from "@arco-design/web-react";
+
 import {
     LeftMenuInterface,
     ListSearchTableItem,
@@ -7,7 +10,6 @@ import {
 } from "src/Core";
 import { MockUser } from "src/Domain/Model/MockUser";
 import tailwindConfig from "../../../tailwind.config";
-import { Message, MessageProps } from "@arco-design/web-react";
 
 export function GetBreadCrumbArray(
     items: LeftMenuInterface[],
@@ -199,3 +201,20 @@ export function showMessage(
 
     messageFunction(config);
 }
+
+// ENCRYPT
+export const encrypt = (str: string | undefined): string => {
+    if (str)
+    return CryptoJS.AES.encrypt(str, import.meta.env.VITE_CRYPTOJS_SECRET).toString();
+    return ""
+};
+
+// DECRYPT
+export const decrypt = (ciphertext: string | undefined): string => {
+    if (ciphertext) {
+
+        const bytes = CryptoJS.AES.decrypt(ciphertext, import.meta.env.VITE_CRYPTOJS_SECRET);
+        return bytes.toString(CryptoJS.enc.Utf8);
+    }
+    return ""
+};

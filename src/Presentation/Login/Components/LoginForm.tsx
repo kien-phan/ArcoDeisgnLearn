@@ -8,7 +8,7 @@ import {
     useAppSelector,
 } from "src/Data/DataSource/Api/LocalDB/reduxHooks";
 import useViewModel from "../LoginContainerViewModel";
-import { showMessage } from "src/Core/Helpers";
+import { decrypt, encrypt, showMessage } from "src/Core/Helpers";
 import { useState } from "react";
 
 function LoginForm() {
@@ -34,14 +34,20 @@ function LoginForm() {
         });
 
         if (userResp.success) {
-            console.log(userResp);
-
             dispatch(
                 loginUser({
                     ...userResp,
+                    data: {
+                        ...userResp.data,
+                        token: encrypt(userResp.data.token),
+                    },
                     isSavePassword: values?.isSavePassword ? true : false,
-                    user_name: values?.isSavePassword ? values?.user_name : "",
-                    pass_word: values?.isSavePassword ? values?.pass_word : "",
+                    user_name: values?.isSavePassword
+                        ? encrypt(values?.user_name)
+                        : "",
+                    pass_word: values?.isSavePassword
+                        ? encrypt(values?.pass_word)
+                        : "",
                 })
             );
             navigate(ROUTES?.DASHBOARD);
@@ -65,8 +71,8 @@ function LoginForm() {
                         className="flex flex-col justify-start items-center gap-2 flex-wrap"
                         onSubmit={handleSubmit}
                         initialValues={{
-                            user_name: user?.user_name,
-                            pass_word: user?.pass_word,
+                            user_name: decrypt(user?.user_name),
+                            pass_word: decrypt(user?.pass_word),
                             isSavePassword: user?.isSavePassword,
                         }}
                     >

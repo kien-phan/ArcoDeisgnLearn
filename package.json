@@ -17,6 +17,7 @@
     "@tanstack/react-query-devtools": "^4.14.1",
     "axios": "^1.6.7",
     "bizcharts": "^4.1.23",
+    "crypto-js": "^4.2.0",
     "less": "^4.2.0",
     "react": "^18.2.0",
     "react-antd-column-resize": "^1.0.3",
@@ -27,6 +28,7 @@
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@types/react-resizable": "^3.0.7",
