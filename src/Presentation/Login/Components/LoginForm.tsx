@@ -38,8 +38,8 @@ function LoginForm() {
                 loginUser({
                     ...userResp,
                     data: {
-                        ...userResp.data,
-                        token: encrypt(userResp.data.token),
+                        ...userResp?.data,
+                        token: encrypt(userResp?.data?.token),
                     },
                     isSavePassword: values?.isSavePassword ? true : false,
                     user_name: values?.isSavePassword
@@ -52,7 +52,7 @@ function LoginForm() {
             );
             navigate(ROUTES?.DASHBOARD);
         } else {
-            showMessage("error", userResp.message);
+            showMessage("error", userResp?.message);
         }
         setLoading(false);
     };
@@ -84,20 +84,20 @@ function LoginForm() {
                                 {
                                     required: true,
                                     message:
-                                        FORMRULEMESSAGES.LOGIN
-                                            .USERNAME_REQUIRED,
+                                        FORMRULEMESSAGES?.LOGIN
+                                            ?.USERNAME_REQUIRED,
                                 },
                                 {
                                     minLength: 6,
                                     message:
-                                        FORMRULEMESSAGES.LOGIN
-                                            .PASSWORD_MINLENGTH,
+                                        FORMRULEMESSAGES?.LOGIN
+                                            ?.PASSWORD_MINLENGTH,
                                 },
                                 {
                                     maxLength: 16,
                                     message:
-                                        FORMRULEMESSAGES.LOGIN
-                                            .USERNAME_MAXLENGTH,
+                                        FORMRULEMESSAGES?.LOGIN
+                                            ?.USERNAME_MAXLENGTH,
                                 },
                             ]}
                         >
@@ -117,20 +117,20 @@ function LoginForm() {
                                 {
                                     required: true,
                                     message:
-                                        FORMRULEMESSAGES.LOGIN
-                                            .PASSWORD_REQUIRED,
+                                        FORMRULEMESSAGES?.LOGIN
+                                            ?.PASSWORD_REQUIRED,
                                 },
                                 {
                                     minLength: 6,
                                     message:
                                         FORMRULEMESSAGES.LOGIN
-                                            .PASSWORD_MINLENGTH,
+                                            ?.PASSWORD_MINLENGTH,
                                 },
                                 {
                                     maxLength: 16,
                                     message:
-                                        FORMRULEMESSAGES.LOGIN
-                                            .PASSWORD_MAXLENGTH,
+                                        FORMRULEMESSAGES?.LOGIN
+                                            ?.PASSWORD_MAXLENGTH,
                                 },
                             ]}
                         >
