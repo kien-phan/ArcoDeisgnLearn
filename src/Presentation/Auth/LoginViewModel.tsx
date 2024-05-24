@@ -26,6 +26,16 @@ function LoginViewModel() {
     // USE CASES
     const loginUseCase = new LoginUseCase(authRepositoryImpl);
 
+    // STATE
+    const [messageErr, setMessageErr] = useState("");
+
+    // NAVIGATE
+    const navigate = useNavigate();
+
+    // REDUX
+    const user = useAppSelector((state) => state?.auth?.user);
+    const dispatch = useAppDispatch();
+
     // USE MUTATION
     const loginMutation = useMutation({
         mutationKey: [TANSTACKMUTATIONKEYS.LOGIN],
@@ -37,16 +47,6 @@ function LoginViewModel() {
     const handleFocusInput = () => {
         setMessageErr("");
     };
-
-    // STATE
-    const [messageErr, setMessageErr] = useState("");
-
-    // NAVIGATE
-    const navigate = useNavigate();
-
-    // REDUX
-    const user = useAppSelector((state) => state?.auth?.user);
-    const dispatch = useAppDispatch();
 
     // HANDLE SUBMIT
     const handleSubmit = async (values: any) => {
