@@ -1,13 +1,42 @@
 import Logo from "src/Core/Components/Logo";
 import RightSideList from "./Components/RightSideList";
 
-import { HeaderRightSideItemInterface } from "src/Core";
+import { AUTHROUTE, HeaderRightSideItemInterface } from "src/Core";
+import { useEffect, useState } from "react";
+import LocaleButton from "./Components/LocaleButton";
+import DarkModeButton from "./Components/DarkModeButton";
+import AvatarButton from "./Components/AvatarButton";
 
 interface Props {
-    items: HeaderRightSideItemInterface[];
+    pathName: string;
 }
 
-function HeaderLayoutComponent({ items }: Props) {
+function HeaderLayoutComponent({ pathName }: Props) {
+    // STATE
+    const [items, setItems] = useState<HeaderRightSideItemInterface[]>([]);
+
+    useEffect(() => {
+        const headerItems: HeaderRightSideItemInterface[] = [
+            {
+                key: "locale-button-header",
+                content: <LocaleButton />,
+            },
+            {
+                key: "darkMode-button-header",
+                content: <DarkModeButton />,
+            },
+        ];
+
+        if (!pathName.includes(AUTHROUTE)) {
+            headerItems.push({
+                key: "avatar-button-header",
+                content: <AvatarButton />,
+            });
+        }
+
+        setItems(headerItems);
+    }, [pathName]);
+
     return (
         <div className="h-full flex flex-row justify-between items-center">
             <div className="ps-STANDARDCONTAINERPADDINGX">

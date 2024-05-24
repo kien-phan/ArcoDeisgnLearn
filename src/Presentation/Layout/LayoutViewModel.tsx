@@ -11,11 +11,6 @@ import FactAPIDataSourceImpl from "src/Data/DataSource/Api/FactAPIDataSourceImpl
 import { FactRepositoryImpl } from "src/Data/Repository/FactRepositoryImpl";
 import { GetFacts } from "src/Domain/UseCase/Fact/GetFacts";
 
-import { HeaderRightSideItemInterface } from "src/Core";
-import LocaleButton from "src/Presentation/Layout/Header/Components/LocaleButton";
-import DarkModeButton from "src/Presentation/Layout/Header/Components/DarkModeButton";
-import AvatarButton from "src/Presentation/Layout/Header/Components/AvatarButton";
-
 function LayoutViewModel() {
     // STATEs
     const [collapsed, setCollapsed] = useState(true);
@@ -79,26 +74,6 @@ function LayoutViewModel() {
         [collapsed]
     );
 
-    // HEADER ITEMS
-    const headerItems: HeaderRightSideItemInterface[] = useMemo(
-        () => [
-            {
-                key: "locale-button-header",
-                content: <LocaleButton />,
-            },
-
-            {
-                key: "darkMode-button-header",
-                content: <DarkModeButton />,
-            },
-            {
-                key: "avatar-button-header",
-                content: <AvatarButton />,
-            },
-        ],
-        []
-    );
-
     const navigate = useNavigate();
 
     return {
@@ -108,7 +83,6 @@ function LayoutViewModel() {
         siderWidth,
         handleCollapse,
         triggerButton,
-        headerItems,
         navigate,
         headerRef,
         breadcrumbRef,

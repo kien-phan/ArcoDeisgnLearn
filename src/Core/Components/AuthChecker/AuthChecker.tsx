@@ -18,7 +18,7 @@ function AuthChecker({ children }: Props) {
     const user = useAppSelector((state) => state?.auth?.user);
 
     useEffect(() => {
-        if (!user?.data?.user_info) {
+        if (!user?.data?.token) {
             navigate(ROUTES.LOGIN);
         } else if (path === ROUTES.LOGIN) {
             navigate(ROUTES.DASHBOARD);

@@ -8,20 +8,15 @@ import {
 import Dashboard from "src/Presentation/Dashboard";
 import ListSearchTable from "src/Presentation/ListSearchTable";
 import { LeftMenuInterface, translate } from "src/Core";
-import LoginForm from "src/Presentation/Login/Components/LoginForm";
-import RegisterForm from "src/Presentation/Login/Components/RegisterForm";
+import Login from "src/Presentation/Auth/Login";
+import Register from "src/Presentation/Auth/Register";
 import ListUserManage from "src/Presentation/ListUserManage";
 import UserSetting from "src/Presentation/UserSetting";
 import FormContainer from "src/Presentation/Form/FormContainer";
 import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
 
-// URLs
-export const BASE_URL = "https://sys.api.dev.adsai.asia/api";
-export const URLS = {
-    LOGIN: BASE_URL + "/auth/login",
-};
-
 // ROUTES
+export const AUTHROUTE = "/auth";
 export const ROUTES = {
     DASHBOARD: "/dashboard",
     LIST: {
@@ -35,8 +30,14 @@ export const ROUTES = {
         USER_INFO: "/user/user-info",
     },
     ROOT: "/",
-    LOGIN: "/login",
-    REGISTER: "/register",
+    LOGIN: AUTHROUTE + "/login",
+    REGISTER: AUTHROUTE + "/register",
+};
+
+// URLs
+export const BASE_URL = "https://sys.api.dev.adsai.asia/api";
+export const URLS = {
+    LOGIN: BASE_URL + ROUTES.LOGIN,
 };
 
 // PRIVATE ROUTE
@@ -51,14 +52,14 @@ export const PRIVATE_ROUTE = [
 
 // PUBLIC ROUTE
 export const PUBLIC_ROUTE = [
-    { path: ROUTES.ROOT, element: <LoginForm /> },
+    { path: ROUTES.ROOT, element: <Login /> },
     {
         path: ROUTES.LOGIN,
-        element: <LoginForm />,
+        element: <Login />,
     },
     {
         path: ROUTES.REGISTER,
-        element: <RegisterForm />,
+        element: <Register />,
     },
 ];
 
@@ -147,6 +148,10 @@ export const ELEMENT_ID = {
 // TANSTACK QUERY KEYS
 export const TANSTACKQUERYKEYS = {
     MOCKUSERS: "mockUsers",
+};
+
+export const TANSTACKMUTATIONKEYS = {
+    LOGIN: "login",
 };
 
 // MOCKUSER STATUS
