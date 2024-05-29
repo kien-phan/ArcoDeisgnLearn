@@ -14,6 +14,7 @@ import ListUserManage from "src/Presentation/ListUserManage";
 import UserSetting from "src/Presentation/UserSetting";
 import FormContainer from "src/Presentation/Form/FormContainer";
 import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
+import ListCard from "src/Presentation/ListCard";
 
 // ROUTES
 export const AUTHROUTE = "/auth";
@@ -22,7 +23,7 @@ export const ROUTES = {
     LIST: {
         USER_MANAGE: "/list/user-manage",
         SEARCH_TABLE: "/list/search-table",
-        CARD_LIST: "/list/card-list",
+        LIST_CARD: "/list/card-list",
     },
     FORM: "/form",
     USER: {
@@ -45,6 +46,7 @@ export const PRIVATE_ROUTE = [
     { path: ROUTES.DASHBOARD, element: <Dashboard /> },
     { path: ROUTES.LIST.USER_MANAGE, element: <ListUserManage /> },
     { path: ROUTES.LIST.SEARCH_TABLE, element: <ListSearchTable /> },
+    { path: ROUTES.LIST.LIST_CARD, element: <ListCard /> },
     { path: ROUTES.USER.USER_SETTING, element: <UserSetting /> },
     { path: ROUTES.USER.USER_INFO, element: <UserInfoContainer /> },
     { path: ROUTES.FORM, element: <FormContainer /> },
@@ -86,6 +88,11 @@ export const GetLeftMenuDatas = (locale: string) => {
                     key: "search-table",
                     label: translate("list.searchTable", locale),
                     path: ROUTES.LIST.SEARCH_TABLE,
+                },
+                {
+                    key: "list-card",
+                    label: translate("list.listCard", locale),
+                    path: ROUTES.LIST.LIST_CARD,
                 },
             ],
         },

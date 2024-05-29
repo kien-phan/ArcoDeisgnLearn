@@ -88,7 +88,7 @@ function UserSetting() {
                     </TabPane>
                     <TabPane key="2" title="Security Settings">
                         <Typography.Paragraph>
-                            Content of Tab Panel 3
+                            Content of Tab Panel 2
                         </Typography.Paragraph>
                     </TabPane>
                     <TabPane key="3" title="Whether Verified">

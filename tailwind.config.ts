@@ -10,7 +10,6 @@ export default {
                 STANDARDCONTAINERPADDINGX: "8px",
                 STANDARDCONTAINERPADDINGY: "8px",
                 TABLEMARGINTOP: "8px",
-
                 SIDERHEIGHT: "calc(100vh - 60px)",
                 SIDERCOLLAPSEWIDTH: 54,
                 SIDERNORMALWIDTH: 280,
@@ -23,8 +22,9 @@ export default {
                 CBLUE: "#6981ff",
             },
             backgroundImage: {
-                'USERINFOBACKGROUND': "url('https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/proPreview/static/media/header-banner.fcb7b1aa6ce12d210c85.png')"
-            }
+                USERINFOBACKGROUND:
+                    "url('https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/proPreview/static/media/header-banner.fcb7b1aa6ce12d210c85.png')",
+            },
         },
 
         screens: {

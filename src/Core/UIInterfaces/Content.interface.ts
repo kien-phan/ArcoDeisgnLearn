@@ -56,3 +56,17 @@ export type MessageStatusType =
     | "success"
     | "warning"
     | "error";
+
+// LIST CARD - SERVICE OPENING INTERFACE
+export interface ServiceOpeningInterface {
+    title: string;
+    content: string;
+    status: "none" | "expire" | "opened";
+}
+
+// LIST CARD - RULE PRESET INTERFACE
+export interface RulePresetInterface {
+    title: string;
+    content: string;
+    status: "none" | "activated";
+}

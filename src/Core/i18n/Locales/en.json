@@ -4,7 +4,8 @@
     "list": {
         "list": "List",
         "searchTable": "Search Table",
-        "userManage": "User Manage"
+        "userManage": "User Manage",
+        "listCard": "Card List"
     },
     "form": "Form",
     "profile": "Profile",

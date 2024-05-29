@@ -4,7 +4,8 @@
     "list": {
         "list": "Danh sách",
         "searchTable": "Tìm kiếm",
-        "userManage": "Quản lý người dùng"
+        "userManage": "Quản lý người dùng",
+        "listCard": "Danh sách thẻ"
     },
     "form": "Mẫu đơn",
     "profile": "Hồ sơ",
