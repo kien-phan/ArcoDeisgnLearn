@@ -34,12 +34,7 @@ export const connectAPI = async ({
 
 // HANDLE RESPONSE FROM AXIOS
 export const handleAPIResponse = (response: AxiosResponse<any, any>) => {
-    if (response && response.status >= 200 && response.status < 300) {
-        return {
-            success: true,
-            data: response.data,
-        };
-    } else {
+    if (!response.data.success || (response && response.status >= 400)) {
         let errorMsg = "Unknown error";
         if (response && response.data && response.data?.message) {
             errorMsg = response?.data?.message;
@@ -51,4 +46,9 @@ export const handleAPIResponse = (response: AxiosResponse<any, any>) => {
             errorMsg: errorMsg,
         };
     }
+
+    return {
+        success: true,
+        data: response.data,
+    };
 };
