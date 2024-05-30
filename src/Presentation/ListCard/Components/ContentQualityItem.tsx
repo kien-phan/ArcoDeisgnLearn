@@ -1,4 +1,7 @@
+import { memo } from "react";
+
 import { Button } from "@arco-design/web-react";
+
 import CardContainer from "./CardContainer";
 
 interface Props {
@@ -28,12 +31,22 @@ function ContentQualityItem({ title, time, number1, number2, number3 }: Props) {
                     </div>
                 </div>
             </div>
-            <div className="mt-4 flex flex-row justify-end items-center gap-STANDARDMARGINANDPADDING">
-                <Button type="secondary">Remove</Button>
-                <Button type="primary">Quality inspection</Button>
+            <div className="mt-4 flex flex-col justify-center xl:flex-row xl:justify-end items-center gap-STANDARDMARGINANDPADDING overflow-hidden">
+                <Button
+                    type="secondary"
+                    className="h-auto xl:h-8 w-full xl:w-auto"
+                >
+                    Remove
+                </Button>
+                <Button
+                    type="primary"
+                    className="h-auto xl:h-8 w-full xl:w-auto"
+                >
+                    Quality inspection
+                </Button>
             </div>
         </CardContainer>
     );
 }
 
-export default ContentQualityItem;
+export default memo(ContentQualityItem);

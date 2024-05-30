@@ -14,7 +14,7 @@ function UserSetting() {
                 id={ELEMENT_ID?.USERSETTINGINFO}
                 className="w-full rounded p-2 !bg-[color:var(--color-bg-2)]"
             >
-                <div className="grid grid-cols-12 gap-2 p-2">
+                <div className="grid grid-cols-12 gap-2 p-5">
                     <div className="col-span-12 md:col-span-2 flex flex-row justify-center md:justify-start items-center">
                         <Avatar
                             className="w-16 h-16 md:w-28 md:h-28"

@@ -7,7 +7,7 @@ function SearchCard() {
         <InputSearch
             allowClear
             placeholder="Enter keyword to search"
-            style={{ width: 350 }}
+            className="w-[200px] md:w-[350px]"
         />
     );
 }

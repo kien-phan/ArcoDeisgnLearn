@@ -1,5 +1,8 @@
+import { memo } from "react";
+
 import { Card, Skeleton, Tooltip } from "@arco-design/web-react";
 import { IconMore } from "@arco-design/web-react/icon";
+
 import { LeftMenuInterface } from "src/Core";
 import DropList from "src/Core/Components/DropList";
 import DropDownComponent from "src/Core/Components/Dropdown";
@@ -88,4 +91,4 @@ function CardContainer({
     );
 }
 
-export default CardContainer;
+export default memo(CardContainer);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useMemo, useState } from "react";
 
 import { Button, Tag } from "@arco-design/web-react";
 import {
@@ -56,23 +56,26 @@ function ServiceOpening({ title, content, status }: ServiceOpeningInterface) {
     };
 
     // STATUS BUTTON
-    const statusButton = {
-        none: (
-            <Button type="outline" onClick={handleButtonActionsClick}>
-                Subscribe
-            </Button>
-        ),
-        expire: (
-            <Button type="outline" onClick={handleButtonActionsClick}>
-                Renewal
-            </Button>
-        ),
-        opened: (
-            <Button type="secondary" onClick={handleButtonActionsClick}>
-                Cancel
-            </Button>
-        ),
-    }[singleStatus];
+    const statusButton = useMemo(() => {
+        return {
+            none: (
+                <Button type="outline" onClick={handleButtonActionsClick}>
+                    Subscribe
+                </Button>
+            ),
+            expire: (
+                <Button type="outline" onClick={handleButtonActionsClick}>
+                    Renewal
+                </Button>
+            ),
+            opened: (
+                <Button type="secondary" onClick={handleButtonActionsClick}>
+                    Cancel
+                </Button>
+            ),
+        }[singleStatus];
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [singleStatus]);
 
     return (
         <CardContainer
@@ -95,4 +98,4 @@ function ServiceOpening({ title, content, status }: ServiceOpeningInterface) {
     );
 }
 
-export default ServiceOpening;
+export default memo(ServiceOpening);

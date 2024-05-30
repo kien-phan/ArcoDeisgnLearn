@@ -1,8 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import tailwindConfig from "../../../tailwind.config";
-
 import { Button } from "@arco-design/web-react";
 import { IconMenuFold, IconMenuUnfold } from "@arco-design/web-react/icon";
 
@@ -10,6 +8,7 @@ import { Fact } from "src/Domain/Model/Fact";
 import FactAPIDataSourceImpl from "src/Data/DataSource/Api/FactAPIDataSourceImpl";
 import { FactRepositoryImpl } from "src/Data/Repository/FactRepositoryImpl";
 import { GetFacts } from "src/Domain/UseCase/Fact/GetFacts";
+import tailwindConfig from "../../../tailwind.config";
 
 function LayoutViewModel() {
     // STATEs
@@ -17,7 +16,6 @@ function LayoutViewModel() {
     const [siderWidth, setSiderWidth] = useState(
         tailwindConfig.theme.extend.spacing.SIDERCOLLAPSEWIDTH
     );
-
     const [facts, setFacts] = useState<Fact[]>([]);
 
     // REFs
@@ -74,6 +72,7 @@ function LayoutViewModel() {
         [collapsed]
     );
 
+    // NAVIGATE
     const navigate = useNavigate();
 
     return {
