@@ -7,7 +7,6 @@ function Login() {
         useViewModel();
 
     return (
-        // <div className="bg-[color:var(--color-white)] p-8 rounded-2xl shadow-xl">
         <div className="p-8 mb-4 w-3/4 lg:w-1/3 max-w-[520px] flex flex-col justify-start items-center bg-[color:var(--color-bg-1)] rounded-2xl shadow-xl">
             <div className="flex flex-row justify-center items-center">
                 <h2 className="text-xl font-bold mb-4">Login</h2>
@@ -116,7 +115,6 @@ function Login() {
                 </Form>
             </div>
         </div>
-        // </div>
     );
 }
 

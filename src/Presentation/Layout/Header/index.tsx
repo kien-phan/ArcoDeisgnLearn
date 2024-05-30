@@ -1,7 +1,7 @@
 import Logo from "src/Core/Components/Logo";
 import RightSideList from "./Components/RightSideList";
 
-import { AUTHROUTE, HeaderRightSideItemInterface } from "src/Core";
+import { AUTHROUTE, HeaderRightSideItemInterface, ROUTES } from "src/Core";
 import { useEffect, useState } from "react";
 import LocaleButton from "./Components/LocaleButton";
 import DarkModeButton from "./Components/DarkModeButton";
@@ -27,7 +27,9 @@ function HeaderLayoutComponent({ pathName }: Props) {
             },
         ];
 
-        if (!pathName.includes(AUTHROUTE)) {
+        if (!pathName.includes(AUTHROUTE) && pathName !== ROUTES.ROOT) {
+            console.log(pathName);
+
             headerItems.push({
                 key: "avatar-button-header",
                 content: <AvatarButton />,

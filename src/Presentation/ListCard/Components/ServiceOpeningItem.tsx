@@ -9,12 +9,14 @@ import tailwindConfig from "../../../../tailwind.config";
 import CardContainer from "./CardContainer";
 
 function ServiceOpening({ title, content, status }: ServiceOpeningInterface) {
+    // STATUS ICON
     const statusIcon = {
         none: <IconThumbUpFill />,
         expire: <IconFaceSmileFill />,
         opened: <IconSunFill />,
     }[status];
 
+    // STATUS TAG
     const statusTag = {
         expire: {
             color: tailwindConfig?.theme?.extend?.colors?.CRED,
@@ -27,6 +29,7 @@ function ServiceOpening({ title, content, status }: ServiceOpeningInterface) {
         none: null,
     }[status];
 
+    // STATUS BUTTON
     const statusButton = {
         none: <Button type="outline">Subscribe</Button>,
         expire: <Button type="outline">Renewal</Button>,

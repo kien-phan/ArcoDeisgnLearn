@@ -8,7 +8,7 @@ const Footer = Layout.Footer;
 
 import SiderChildComponent from "../Sider";
 import Breadcrumb from "src/Core/Components/BreadcrumbCpn";
-import { AUTHROUTE, ELEMENT_ID } from "src/Core";
+import { AUTHROUTE, ELEMENT_ID, ROUTES } from "src/Core";
 import useViewModel from "../LayoutViewModel";
 
 interface Props {
@@ -19,7 +19,8 @@ function ContentContainer({ pathName }: Props) {
     const { collapsed, siderWidth, handleCollapse, triggerButton } =
         useViewModel();
 
-    if (pathName.includes(AUTHROUTE)) {
+    // LOGIN ROUTE
+    if (pathName.includes(AUTHROUTE) || pathName === ROUTES.ROOT) {
         return (
             <div className="flex-1 flex flex-row justify-center items-center">
                 <Outlet />
