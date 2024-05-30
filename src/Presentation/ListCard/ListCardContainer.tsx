@@ -8,12 +8,12 @@ function ListCardContainer() {
     return (
         <WhiteContainer>
             <h2 className="text-base">Card List</h2>
-            <div className="w-full mt-STANDARDMARGINANDPADDING rounded p-STANDARDMARGINANDPADDING !bg-[color:var(--color-bg-2)] flex flex-row justify-between items-start">
+            <div className="w-full mt-STANDARDMARGINANDPADDING rounded !bg-[color:var(--color-bg-2)] flex flex-row justify-between items-start">
                 <Tabs
                     type="rounded"
                     defaultActiveTab="1"
                     extra={<SearchCard />}
-                    className="w-full"
+                    className="w-full mt-STANDARDMARGINANDPADDING"
                 >
                     <TabPane key="1" title="All">
                         <AllCardList contentQuality rulePreset serviceOpening />

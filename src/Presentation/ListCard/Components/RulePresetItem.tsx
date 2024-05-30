@@ -7,6 +7,7 @@ import CardContainer from "./CardContainer";
 function RulePresetItem({ title, content, status }: RulePresetInterface) {
     // STATE
     const [singleStatus, setSingleStatus] = useState(status);
+    const [isLoading, setIsLoading] = useState(false);
 
     // STATUS TAG
     const statusTag = {
@@ -20,6 +21,18 @@ function RulePresetItem({ title, content, status }: RulePresetInterface) {
     // HANDLE CHANGE
     const handleSChange = () => {
         setSingleStatus(singleStatus === "activated" ? "none" : "activated");
+        setIsLoading(true);
+        switch (singleStatus) {
+            case "none":
+                setSingleStatus("activated");
+                break;
+            case "activated":
+                setSingleStatus("none");
+                break;
+        }
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
     };
 
     return (
@@ -30,15 +43,14 @@ function RulePresetItem({ title, content, status }: RulePresetInterface) {
                     <Tag color={statusTag?.color}>{statusTag?.label}</Tag>
                 ) : null
             }
+            isLoading={isLoading}
         >
-            <div className="min-h-[100px] flex flex-col justify-between">
-                <p>{content}</p>
-                <div className="flex flex-row justify-end items-center">
-                    <Switch
-                        checked={singleStatus === "activated"}
-                        onChange={handleSChange}
-                    />
-                </div>
+            <p className="line-clamp-3">{content}</p>
+            <div className="flex flex-row justify-end items-center">
+                <Switch
+                    checked={singleStatus === "activated"}
+                    onChange={handleSChange}
+                />
             </div>
         </CardContainer>
     );

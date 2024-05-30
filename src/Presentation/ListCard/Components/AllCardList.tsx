@@ -208,8 +208,8 @@ function AllCardList({ contentQuality, serviceOpening, rulePreset }: Props) {
         <div>
             {contentQuality && (
                 <div>
-                    <h2>Content quality</h2>
-                    <div className="grid grid-cols-12 gap-STANDARDMARGINANDPADDING py-STANDARDMARGINANDPADDING">
+                    <h2 className="mt-6 font-semibold">Content quality</h2>
+                    <div className="grid grid-cols-12 gap-8 py-STANDARDMARGINANDPADDING">
                         <div className="cursor-pointer col-span-3 [&_.arco-card-body]:p-0 [&_.cardDropDown]:hover:block hover:shadow-md p-STANDARDMARGINANDPADDING border border-solid rounded-sm">
                             <div className="w-full h-full flex flex-col justify-center items-center gap-STANDARDMARGINANDPADDING">
                                 <IconPlus className="opacity-80" />
@@ -228,8 +228,8 @@ function AllCardList({ contentQuality, serviceOpening, rulePreset }: Props) {
             )}
             {serviceOpening && (
                 <div>
-                    <h2>Service Opening</h2>
-                    <div className="grid grid-cols-12 gap-STANDARDMARGINANDPADDING py-STANDARDMARGINANDPADDING">
+                    <h2 className="mt-6 font-semibold">Service Opening</h2>
+                    <div className="grid grid-cols-12 gap-8 py-STANDARDMARGINANDPADDING">
                         {serviceOpeningItems.map((item, index) => (
                             <div className="col-span-3" key={index}>
                                 <ServiceOpening
@@ -244,8 +244,8 @@ function AllCardList({ contentQuality, serviceOpening, rulePreset }: Props) {
             )}
             {rulePreset && (
                 <div>
-                    <h2>Rule Presets</h2>
-                    <div className="grid grid-cols-12 gap-STANDARDMARGINANDPADDING py-STANDARDMARGINANDPADDING">
+                    <h2 className="mt-6 font-semibold">Rule Presets</h2>
+                    <div className="grid grid-cols-12 gap-8 py-STANDARDMARGINANDPADDING">
                         {rulePresetItems.map((item, index) => (
                             <div className="col-span-3" key={index}>
                                 <RulePresetItem
