@@ -1,8 +1,14 @@
-import { UserLoginRequest, UserLoginResponse } from "src/Domain/Model/User";
+import {
+    UserLoginRequestData,
+    UserLoginResponseData,
+} from "src/Domain/Model/User";
 import { AuthRepository } from "src/Domain/Repository/AuthRepository";
 
 export interface LoginUseCaseInterface {
-    invoke: (url: string, userLoginRequest: UserLoginRequest) => Promise<UserLoginResponse>;
+    invoke: (
+        url: string,
+        userLoginRequestData: UserLoginRequestData
+    ) => Promise<UserLoginResponseData>;
 }
 
 export class LoginUseCase implements LoginUseCaseInterface {
@@ -12,7 +18,10 @@ export class LoginUseCase implements LoginUseCaseInterface {
         this.authRepo = _authRepo;
     }
 
-    async invoke(url: string, userLoginRequest: UserLoginRequest): Promise<UserLoginResponse> {
-        return this.authRepo.login(url, userLoginRequest);
+    async invoke(
+        url: string,
+        userLoginRequestData: UserLoginRequestData
+    ): Promise<UserLoginResponseData> {
+        return this.authRepo.login(url, userLoginRequestData);
     }
 }

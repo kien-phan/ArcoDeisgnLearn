@@ -1,6 +1,9 @@
 import { AuthRepository } from "src/Domain/Repository/AuthRepository";
 import AuthDataSource from "src/Data/DataSource/AuthDataSource";
-import { UserLoginRequest, UserLoginResponse } from "src/Domain/Model/User";
+import {
+    UserLoginRequestData,
+    UserLoginResponseData,
+} from "src/Domain/Model/User";
 
 export class AuthRepositoryImpl implements AuthRepository {
     private datasource: AuthDataSource;
@@ -9,7 +12,10 @@ export class AuthRepositoryImpl implements AuthRepository {
         this.datasource = _datasource;
     }
 
-    async login(url: string, userLoginRequest: UserLoginRequest): Promise<UserLoginResponse> {
-        return this.datasource.login(url, userLoginRequest)
+    async login(
+        url: string,
+        userLoginRequestData: UserLoginRequestData
+    ): Promise<UserLoginResponseData> {
+        return this.datasource.login(url, userLoginRequestData);
     }
 }

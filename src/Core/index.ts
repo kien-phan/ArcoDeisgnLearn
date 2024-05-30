@@ -17,3 +17,9 @@ export * from "src/Core/Helpers";
 
 // hooks
 export * from "src/Core/Hooks/useDebounce";
+
+// axios handle
+export * from "src/Core/ApiClientAxios/AxiosHandle";
+
+// requests
+export * from "src/Core/ApiClientAxios/Requests";

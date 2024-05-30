@@ -14,10 +14,12 @@ abstract class Http {
         };
     }
 
+    // GET
     async get(url: string, params?: object, headers?: AxiosHeaders) {
         return await this.axiosInstance.get(url, { headers, params });
     }
 
+    // POST
     async post(
         url: string,
         body: object | FormData,

@@ -28,8 +28,6 @@ function HeaderLayoutComponent({ pathName }: Props) {
         ];
 
         if (!pathName.includes(AUTHROUTE) && pathName !== ROUTES.ROOT) {
-            console.log(pathName);
-
             headerItems.push({
                 key: "avatar-button-header",
                 content: <AvatarButton />,

@@ -1,5 +1,11 @@
-import { UserLoginRequest, UserLoginResponse } from "src/Domain/Model/User";
+import {
+    UserLoginRequestData,
+    UserLoginResponseData,
+} from "src/Domain/Model/User";
 
 export default interface AuthDataSource {
-    login(url: string, userLoginRequest: UserLoginRequest): Promise<UserLoginResponse>
+    login(
+        url: string,
+        userLoginRequestData: UserLoginRequestData
+    ): Promise<UserLoginResponseData>;
 }

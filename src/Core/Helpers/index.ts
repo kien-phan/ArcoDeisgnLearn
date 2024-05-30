@@ -1,4 +1,4 @@
-import CryptoJS from 'crypto-js';
+import CryptoJS from "crypto-js";
 import { Message, MessageProps } from "@arco-design/web-react";
 
 import {
@@ -205,16 +205,21 @@ export function showMessage(
 // ENCRYPT
 export const encrypt = (str: string | undefined): string => {
     if (str)
-    return CryptoJS.AES.encrypt(str, import.meta.env.VITE_CRYPTOJS_SECRET).toString();
-    return ""
+        return CryptoJS.AES.encrypt(
+            str,
+            import.meta.env.VITE_CRYPTOJS_SECRET
+        ).toString();
+    return "";
 };
 
 // DECRYPT
 export const decrypt = (ciphertext: string | undefined): string => {
     if (ciphertext) {
-
-        const bytes = CryptoJS.AES.decrypt(ciphertext, import.meta.env.VITE_CRYPTOJS_SECRET);
+        const bytes = CryptoJS.AES.decrypt(
+            ciphertext,
+            import.meta.env.VITE_CRYPTOJS_SECRET
+        );
         return bytes.toString(CryptoJS.enc.Utf8);
     }
-    return ""
+    return "";
 };

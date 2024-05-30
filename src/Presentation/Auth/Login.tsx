@@ -1,6 +1,6 @@
 import { Button, Checkbox, Form, Input, Space } from "@arco-design/web-react";
 import useViewModel from "./LoginViewModel";
-import { FORMRULEMESSAGES, decrypt } from "src/Core";
+import { FORMRULEMESSAGES, LoginFormValuesInterface, decrypt } from "src/Core";
 
 function Login() {
     const { handleSubmit, handleFocusInput, loginMutation, messageErr, user } =
@@ -19,7 +19,9 @@ function Login() {
                 <Form
                     layout="vertical"
                     className="flex flex-col justify-start items-center gap-2 flex-wrap w-full"
-                    onSubmit={handleSubmit}
+                    onSubmit={(values: LoginFormValuesInterface) =>
+                        handleSubmit(values)
+                    }
                     initialValues={{
                         user_name: decrypt(user?.user_name),
                         pass_word: decrypt(user?.pass_word),

@@ -20,7 +20,7 @@ function AuthChecker({ children }: Props) {
     useEffect(() => {
         if (!user?.data?.token) {
             navigate(ROUTES.LOGIN);
-        } else if (path === ROUTES.LOGIN) {
+        } else if (path === ROUTES.LOGIN || path === ROUTES.ROOT) {
             navigate(ROUTES.DASHBOARD);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

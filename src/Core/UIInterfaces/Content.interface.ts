@@ -70,3 +70,10 @@ export interface RulePresetInterface {
     content: string;
     status: "none" | "activated";
 }
+
+// LOGIN FORM VALUES INTERFACE
+export interface LoginFormValuesInterface {
+    user_name: string;
+    pass_word: string;
+    isSavePassword: boolean;
+}

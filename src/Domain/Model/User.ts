@@ -1,5 +1,5 @@
 // USER REQUEST
-export interface UserLoginRequest {
+export interface UserLoginRequestData {
     user_name: string;
     pass_word: string;
 }
@@ -35,7 +35,7 @@ export interface Data {
     user_info: UserInfo;
 }
 
-export interface UserLoginResponse {
+export interface UserLoginResponseData {
     data: Data;
     success: boolean;
     code: number;
@@ -43,9 +43,8 @@ export interface UserLoginResponse {
     version: string;
 }
 
-export interface User extends UserLoginResponse {
-    isSavePassword: boolean,
-    pass_word?: string,
-    user_name?: string
+export interface User extends UserLoginResponseData {
+    isSavePassword: boolean;
+    pass_word?: string;
+    user_name?: string;
 }
-
