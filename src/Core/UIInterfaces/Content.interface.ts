@@ -77,3 +77,10 @@ export interface LoginFormValuesInterface {
     pass_word: string;
     isSavePassword: boolean;
 }
+
+export interface PublicOpinionAnalysisInterface {
+    title: string;
+    amount: number;
+    todayChange: number;
+    chart?: React.ReactNode;
+}

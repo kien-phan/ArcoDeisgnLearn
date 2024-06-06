@@ -1,4 +1,5 @@
 import {
+    IconApps,
     IconDashboard,
     IconList,
     IconSettings,
@@ -15,11 +16,13 @@ import UserSetting from "src/Presentation/UserSetting";
 import FormContainer from "src/Presentation/Form/FormContainer";
 import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
 import ListCard from "src/Presentation/ListCard";
+import DataVisualization from "src/Presentation/DataVisualization";
 
 // ROUTES
 export const AUTHROUTE = "/auth";
 export const ROUTES = {
     DASHBOARD: "/dashboard",
+    DATAVISUALIZATION: "/data-visualization",
     LIST: {
         USER_MANAGE: "/list/user-manage",
         SEARCH_TABLE: "/list/search-table",
@@ -45,6 +48,7 @@ export const URLS = {
 export const PRIVATE_ROUTE = [
     { path: ROUTES.DASHBOARD, element: <Dashboard /> },
     { path: ROUTES.LIST.USER_MANAGE, element: <ListUserManage /> },
+    { path: ROUTES.DATAVISUALIZATION, element: <DataVisualization /> },
     { path: ROUTES.LIST.SEARCH_TABLE, element: <ListSearchTable /> },
     { path: ROUTES.LIST.LIST_CARD, element: <ListCard /> },
     { path: ROUTES.USER.USER_SETTING, element: <UserSetting /> },
@@ -73,6 +77,12 @@ export const GetLeftMenuDatas = (locale: string) => {
             icon: <IconDashboard className="text-xl" />,
             label: translate("dashboard", locale),
             path: ROUTES.DASHBOARD,
+        },
+        {
+            key: "data-visualization",
+            icon: <IconApps className="text-xl" />,
+            label: translate("dataVisualization", locale),
+            path: ROUTES.DATAVISUALIZATION,
         },
         {
             key: "list",
