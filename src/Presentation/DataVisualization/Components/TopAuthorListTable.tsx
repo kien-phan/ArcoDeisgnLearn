@@ -77,15 +77,22 @@ function TopAuthorListTable() {
             intervalVolume: 1119,
             clickVolume: 19459,
         },
+        {
+            key: "8",
+            rank: "8",
+            author: "陈皮话梅糖",
+            intervalVolume: 1119,
+            clickVolume: 19459,
+        },
+        {
+            key: "8",
+            rank: "8",
+            author: "陈皮话梅糖",
+            intervalVolume: 1119,
+            clickVolume: 19459,
+        },
     ];
-    return (
-        <Table
-            columns={columns}
-            data={data}
-            pagination={false}
-            scroll={{ y: window.innerHeight > 1024 ? 307 : undefined }}
-        />
-    );
+    return <Table columns={columns} data={data} pagination={false} />;
 }
 
 export default memo(TopAuthorListTable);

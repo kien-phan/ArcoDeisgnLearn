@@ -8,11 +8,11 @@ function UserInfoContainer() {
     return (
         <div className="flex flex-col gap-2">
             <UserInfoHeader />
-            <div className="grid grid-cols-12 gap-2">
-                <div className="col-span-8">
+            <div className="grid grid-cols-12 gap-2 grid-rows-3">
+                <div className="col-span-8 row-span-3">
                     <MyProject />
                 </div>
-                <div className="col-span-4">
+                <div className="col-span-4 row-span-3">
                     <MyTeam />
                 </div>
             </div>

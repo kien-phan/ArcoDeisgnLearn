@@ -5,7 +5,7 @@ function MyTeam() {
     const teamMates = [
         {
             avatar: (
-                <Avatar size={48} className="bg-CBLUE">
+                <Avatar size={32} className="bg-CBLUE">
                     A
                 </Avatar>
             ),
@@ -14,7 +14,7 @@ function MyTeam() {
         },
         {
             avatar: (
-                <Avatar size={48} className="bg-CBLUE">
+                <Avatar size={32} className="bg-CBLUE">
                     B
                 </Avatar>
             ),
@@ -23,7 +23,7 @@ function MyTeam() {
         },
         {
             avatar: (
-                <Avatar size={48} className="bg-CBLUE">
+                <Avatar size={32} className="bg-CBLUE">
                     C
                 </Avatar>
             ),
@@ -32,7 +32,7 @@ function MyTeam() {
         },
         {
             avatar: (
-                <Avatar size={48} className="bg-CBLUE">
+                <Avatar size={32} className="bg-CBLUE">
                     D
                 </Avatar>
             ),

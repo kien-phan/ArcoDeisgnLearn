@@ -6,7 +6,9 @@ function ContentPublisingRate() {
     return (
         <WhiteContainer>
             <h2 className="mb-4">Content publishing rate</h2>
-            <ChartContentPublisingRate />
+            <div className="w-full h-full flex flex-row justify-center items-center">
+                <ChartContentPublisingRate />
+            </div>
         </WhiteContainer>
     );
 }

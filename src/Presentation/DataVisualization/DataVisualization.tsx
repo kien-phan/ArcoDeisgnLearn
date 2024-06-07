@@ -1,3 +1,4 @@
+import { memo } from "react";
 import ContentPeriodAnalysis from "./Components/ContentPeriodAnalysis";
 import ContentPublisingRate from "./Components/ContentPublisingRate";
 import PublicOpinionAnalysis from "./Components/PublicOpinionAnalysis";
@@ -20,4 +21,4 @@ function DataVisualization() {
     );
 }
 
-export default DataVisualization;
+export default memo(DataVisualization);

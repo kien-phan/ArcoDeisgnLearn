@@ -15,14 +15,17 @@ function PublicOpinionAnalysisCard({
     todayChange,
     chart,
 }: PublicOpinionAnalysisInterface) {
+    // STATE
     const [isLoading, setIsLoading] = useState(true);
 
+    // USEEFFECT
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
     }, []);
 
+    // RANDOM NUMBER
     const randomNumber = useMemo(() => {
         return Math.floor(Math.random() * 3);
     }, []);

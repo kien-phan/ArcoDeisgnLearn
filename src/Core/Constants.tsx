@@ -188,5 +188,3 @@ export const MESSAGESTATUS = {
     WARNING: "warning",
     ERROR: "error",
 } as const;
-
-// ACTIONS AXIOS
