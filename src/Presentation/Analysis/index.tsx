@@ -1,1 +1,1 @@
-export { default } from "./AnalysisContainer";
+export { default } from "./Analysis";

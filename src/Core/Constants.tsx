@@ -16,13 +16,17 @@ import UserSetting from "src/Presentation/UserSetting";
 import FormContainer from "src/Presentation/Form/FormContainer";
 import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
 import ListCard from "src/Presentation/ListCard";
-import DataVisualization from "src/Presentation/DataVisualization";
+import MultiDAnalysis from "src/Presentation/MultiDAnalysis";
+import Analysis from "src/Presentation/Analysis";
 
 // ROUTES
 export const AUTHROUTE = "/auth";
 export const ROUTES = {
     DASHBOARD: "/dashboard",
-    DATAVISUALIZATION: "/data-visualization",
+    DATAVISUALIZATION: {
+        ANALYSIS: "/data-visualization/analysis",
+        MULTIDANALYSIS: "/data-visualization/multi-d-analysis",
+    },
     LIST: {
         USER_MANAGE: "/list/user-manage",
         SEARCH_TABLE: "/list/search-table",
@@ -48,7 +52,14 @@ export const URLS = {
 export const PRIVATE_ROUTE = [
     { path: ROUTES.DASHBOARD, element: <Dashboard /> },
     { path: ROUTES.LIST.USER_MANAGE, element: <ListUserManage /> },
-    { path: ROUTES.DATAVISUALIZATION, element: <DataVisualization /> },
+    {
+        path: ROUTES.DATAVISUALIZATION.ANALYSIS,
+        element: <Analysis />,
+    },
+    {
+        path: ROUTES.DATAVISUALIZATION.MULTIDANALYSIS,
+        element: <MultiDAnalysis />,
+    },
     { path: ROUTES.LIST.SEARCH_TABLE, element: <ListSearchTable /> },
     { path: ROUTES.LIST.LIST_CARD, element: <ListCard /> },
     { path: ROUTES.USER.USER_SETTING, element: <UserSetting /> },
@@ -81,8 +92,22 @@ export const GetLeftMenuDatas = (locale: string) => {
         {
             key: "data-visualization",
             icon: <IconApps className="text-xl" />,
-            label: translate("dataVisualization", locale),
-            path: ROUTES.DATAVISUALIZATION,
+            label: translate("dataVisualization.dv", locale),
+            subList: [
+                {
+                    key: "analysis",
+                    label: translate("dataVisualization.analysis", locale),
+                    path: ROUTES.DATAVISUALIZATION.ANALYSIS,
+                },
+                {
+                    key: "multi-d-analysis",
+                    label: translate(
+                        "dataVisualization.multiDAnalysis",
+                        locale
+                    ),
+                    path: ROUTES.DATAVISUALIZATION.MULTIDANALYSIS,
+                },
+            ],
         },
         {
             key: "list",

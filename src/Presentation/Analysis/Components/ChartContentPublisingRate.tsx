@@ -185,13 +185,24 @@ const data = [
 ];
 
 function ChartContentPublisingRate() {
+    let flag = 0;
+
     return (
         <Chart padding="auto" autoFit height={370} data={data}>
             <Interval
                 adjust={[{ type: "stack" }]}
                 shape=""
+                size={20}
                 position="time*temperature"
                 color={["city", ["#89e4fe", "#22b6ff", "#3177ff"]]}
+                style={[
+                    "time*temperature",
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    (time, _temperature) => {
+                        if (time === data[0].time) flag += 1;
+                        if (flag === 1) return { radius: [4, 4, 0, 0] };
+                    },
+                ]}
             />
             <Tooltip shared />
             <Interaction type="active-region" />

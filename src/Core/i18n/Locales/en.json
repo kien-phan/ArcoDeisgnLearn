@@ -1,6 +1,10 @@
 {
     "dashboard": "Dashboard",
-    "dataVisualization": "Data Visualization",
+    "dataVisualization": {
+        "dv": "Data Visualization",
+        "analysis": "Analysis",
+        "multiDAnalysis": "Multi-D Analysis"
+    },
     "list": {
         "list": "List",
         "searchTable": "Search Table",

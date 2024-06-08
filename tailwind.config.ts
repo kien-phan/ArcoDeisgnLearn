@@ -20,14 +20,18 @@ export default {
                 CGREEN: "green",
                 CRED: "red",
                 CBLUE: "#6981ff",
+                ARCOBLUE1: "rgb(var(--arcoblue-1))",
             },
             backgroundImage: {
                 USERINFOBACKGROUND:
                     "url('https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/proPreview/static/media/header-banner.fcb7b1aa6ce12d210c85.png')",
                 GRADIENTBLUE: "linear-gradient(180deg, #f2f9fe, #e6f4fe)",
+                GRADIENTDARKBLUE: "linear-gradient(180deg, #284991, #122b62)",
                 GRADIENTGREEN: "linear-gradient(180deg, #f5fef2, #e6feee)",
+                GRADIENTDARKGREEN: "linear-gradient(180deg, #3d492e, #263827);",
                 GRADIENTLIGHTPURPLE:
                     "linear-gradient(180deg, #f7f7ff, #ececff)",
+                GRADIENTDARKPURPLE: "linear-gradient(180deg, #312565, #201936)",
             },
         },
 

@@ -1,6 +1,10 @@
 {
     "dashboard": "Tổng quan",
-    "dataVisualization": "Dữ liệu trực quan",
+    "dataVisualization": {
+        "dv": "Dữ liệu trực quan",
+        "analysis": "Phân tích",
+        "multiDAnalysis": "Phân tích đa chiều"
+    },
     "list": {
         "list": "Danh sách",
         "searchTable": "Tìm kiếm",

@@ -4,7 +4,7 @@ import ContentPublisingRate from "./Components/ContentPublisingRate";
 import PublicOpinionAnalysis from "./Components/PublicOpinionAnalysis";
 import TopAuthorList from "./Components/TopAuthorList";
 
-function DataVisualization() {
+function Analysis() {
     return (
         <div className="flex flex-col gap-STANDARDMARGINANDPADDING">
             <PublicOpinionAnalysis />
@@ -21,4 +21,4 @@ function DataVisualization() {
     );
 }
 
-export default memo(DataVisualization);
+export default memo(Analysis);

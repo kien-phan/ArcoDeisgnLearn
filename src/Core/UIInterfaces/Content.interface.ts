@@ -5,8 +5,10 @@ export interface DataCategoryItemInterface {
     label: string;
     data: string;
     unit: React.ReactNode;
+    icon?: React.ReactNode;
 }
 
+// DASH BOARD
 export interface RightDashboardButtonInterface {
     label: string;
     icon: React.ReactNode;
@@ -17,6 +19,7 @@ export interface RightDashboardAnnouncementInterface {
     label: string;
 }
 
+// LIST SEARCH TABLE ITEM INTERFACE
 export interface ListSearchTableItem {
     collectionId: string;
     collectionName: string;
@@ -27,26 +30,21 @@ export interface ListSearchTableItem {
     status: "ok" | "not ok";
 }
 
+// MOCK USER TABLE
 export type MockUserTableItem = Pick<
     MockUser,
     "id" | "user_name" | "email" | "status_label" | "group_list"
 >;
 
+// MOCK USER FILTER
 export interface MockUserFilterProp {
     searchValue: string;
 }
 
+// DRAWER INTERFACE
 export interface MockUserDrawerDataInterface {
     label?: React.ReactNode;
     value?: React.ReactNode;
-}
-
-export interface ElementHeightInterface {
-    headerHeight: number;
-    breadcrumbHeight: number;
-    tableFilterHeight: number;
-    theadHeight: number;
-    tablePaginationHeight: number;
 }
 
 // MESSAGE STATUS TYPE

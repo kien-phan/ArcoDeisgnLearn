@@ -1,7 +1,11 @@
-import { Avatar, Divider, Space, Typography } from "@arco-design/web-react";
+import { Divider, Space, Typography } from "@arco-design/web-react";
 import { IconCaretUp } from "@arco-design/web-react/icon";
 import { memo, useMemo } from "react";
 import { DataCategoryItemInterface } from "src/Core";
+import CommentSVG from "src/Core/Components/SVGs/CommentSVG";
+import ContentInMarketSVG from "src/Core/Components/SVGs/ContentInMarketSVG";
+import GrowthSVG from "src/Core/Components/SVGs/GrowthSVG";
+import TotalOnlineDataSVG from "src/Core/Components/SVGs/TotalOnlineDataSVG";
 
 function DataCategories() {
     // DATA
@@ -11,21 +15,25 @@ function DataCategories() {
                 label: "Total online data",
                 data: "373.5w+",
                 unit: "pecs",
+                icon: <TotalOnlineDataSVG />,
             },
             {
                 label: "Content in market",
                 data: "368",
                 unit: "pecs",
+                icon: <ContentInMarketSVG />,
             },
             {
                 label: "Comments",
                 data: "8874",
                 unit: "pecs",
+                icon: <CommentSVG />,
             },
             {
                 label: "Growth",
                 data: "2.8%",
                 unit: <IconCaretUp className="text-green-400" />,
+                icon: <GrowthSVG />,
             },
         ],
         []
@@ -38,7 +46,11 @@ function DataCategories() {
                     className="flex flex-row justify-between items-center"
                 >
                     <Space direction="horizontal">
-                        <Avatar size={54} />
+                        {item && item?.icon && (
+                            <div className="w-[54px] h-[54px] flex flex-row justify-center items-center rounded-full bg-[color:var(--color-fill-2)]">
+                                {item?.icon}
+                            </div>
+                        )}
                         <Space direction="vertical">
                             <Typography className="text-xs">
                                 {item?.label}
