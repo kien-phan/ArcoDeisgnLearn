@@ -21,7 +21,8 @@ export const useWidthElement = (queries: string[]) => {
                 const computedStyle = getComputedStyle(element);
                 setElementWidth(
                     element.offsetWidth +
-                        parseInt(computedStyle.marginRight, 10)
+                        parseInt(computedStyle.marginRight, 10) +
+                        parseInt(computedStyle.marginLeft, 10)
                 );
             }
         };

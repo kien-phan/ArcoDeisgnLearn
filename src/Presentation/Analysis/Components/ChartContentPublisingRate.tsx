@@ -1,5 +1,7 @@
-import { Chart, Interval, Interaction, Tooltip } from "bizcharts";
+import { Chart, Interval, Interaction, Tooltip, Axis } from "bizcharts";
 import { memo } from "react";
+import { formatThounsandNumber } from "src/Core";
+import tailwindConfig from "../../../../tailwind.config";
 
 const data = [
     {
@@ -194,7 +196,17 @@ function ChartContentPublisingRate() {
                 shape=""
                 size={20}
                 position="time*temperature"
-                color={["city", ["#89e4fe", "#22b6ff", "#3177ff"]]}
+                color={[
+                    "city",
+                    [
+                        tailwindConfig.theme.extend.colors
+                            .ChartContentPublisingRateColumn1,
+                        tailwindConfig.theme.extend.colors
+                            .ChartContentPublisingRateColumn2,
+                        tailwindConfig.theme.extend.colors
+                            .ChartContentPublisingRateColumn3,
+                    ],
+                ]}
                 style={[
                     "time*temperature",
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -203,6 +215,16 @@ function ChartContentPublisingRate() {
                         if (flag === 1) return { radius: [4, 4, 0, 0] };
                     },
                 ]}
+            />
+            <Axis
+                name="temperature"
+                label={{
+                    offset: 10,
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    formatter: (text, _item, _index) => {
+                        return formatThounsandNumber(text);
+                    },
+                }}
             />
             <Tooltip shared />
             <Interaction type="active-region" />

@@ -10,6 +10,7 @@ import {
 } from "src/Core";
 import { MockUser } from "src/Domain/Model/MockUser";
 import tailwindConfig from "../../../tailwind.config";
+import numeral from "numeral";
 
 export function GetBreadCrumbArray(
     items: LeftMenuInterface[],
@@ -222,4 +223,15 @@ export const decrypt = (ciphertext: string | undefined): string => {
         return bytes.toString(CryptoJS.enc.Utf8);
     }
     return "";
+};
+
+// CONVERT TO THOUNSAND NUMBER
+export const formatThounsandNumber = (num: number | string): string => {
+    const numAsNumber: number = typeof num === "string" ? parseInt(num) : num;
+    if (numAsNumber < 1000) {
+        return num.toString();
+    }
+
+    const formatted = numeral(num).format("0.[0]a").replace(".0", "");
+    return formatted;
 };

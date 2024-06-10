@@ -21,6 +21,9 @@ export default {
                 CRED: "red",
                 CBLUE: "#6981ff",
                 ARCOBLUE1: "rgb(var(--arcoblue-1))",
+                ChartContentPublisingRateColumn1: "#89e4fe",
+                ChartContentPublisingRateColumn2: "#22b6ff",
+                ChartContentPublisingRateColumn3: "#3177ff",
             },
             backgroundImage: {
                 USERINFOBACKGROUND:

@@ -128,7 +128,7 @@ function DVLineChart() {
         []
     );
     return (
-        <Chart autoFit data={data}>
+        <Chart padding="auto" autoFit data={data}>
             <Axis name="month" visible={false} />
             <Axis name="temperature" visible={false} />
             <Axis name="city" visible={false} />

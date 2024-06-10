@@ -19,6 +19,7 @@
     "bizcharts": "^4.1.23",
     "crypto-js": "^4.2.0",
     "less": "^4.2.0",
+    "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-antd-column-resize": "^1.0.3",
     "react-dom": "^18.2.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
+    "@types/numeral": "^2.0.5",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@types/react-resizable": "^3.0.7",

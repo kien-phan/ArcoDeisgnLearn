@@ -1,6 +1,7 @@
 import { Chart, Axis, LineAdvance } from "bizcharts";
 import { AxisCfg } from "bizcharts/lib/interface";
 import { memo } from "react";
+import { formatThounsandNumber } from "src/Core";
 
 // const { Line } = Guide;
 
@@ -86,7 +87,17 @@ function ChartContentData() {
             autoFit
         >
             <Axis name="dates" {...DateAxisConfig} label={{ offset: 10 }} />
-            <Axis name="first" {...FirstAxisConfig} label={{ offset: 10 }} />
+            <Axis
+                name="first"
+                {...FirstAxisConfig}
+                label={{
+                    offset: 10,
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    formatter: (text, _item, _index) => {
+                        return formatThounsandNumber(text);
+                    },
+                }}
+            />
             <LineAdvance
                 shape="smooth"
                 position="dates*first"

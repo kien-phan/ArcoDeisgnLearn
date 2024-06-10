@@ -24,9 +24,9 @@ function DVBarChart() {
                 color={[
                     "value",
                     (value) => {
-                        if (value > 7) return "#74c476"; // Màu xanh nhạt
-                        if (value > 5) return "#31a354"; // Màu xanh trung bình
-                        return "#006d2c"; // Màu xanh đậm
+                        if (value > 7) return "#74c476";
+                        if (value > 5) return "#31a354";
+                        return "#006d2c";
                     },
                 ]}
             />
