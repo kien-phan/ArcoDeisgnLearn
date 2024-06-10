@@ -12,6 +12,14 @@ import { MockUser } from "src/Domain/Model/MockUser";
 import tailwindConfig from "../../../tailwind.config";
 import numeral from "numeral";
 
+/***********************
+ * BREADCRUMB
+ ***********************/
+
+/**
+ *  To create breadcrumb from item and its sublist
+ *
+ */
 export function GetBreadCrumbArray(
     items: LeftMenuInterface[],
     targetPath: string
@@ -37,6 +45,9 @@ export function GetBreadCrumbArray(
     return path;
 }
 
+/**
+ * find item: LeftMenuInterface in root item and its sublist to get the item has the key
+ */
 export function GetMenuItemByKey(
     key: string,
     menuItems: LeftMenuInterface[]
@@ -62,7 +73,13 @@ export function GetMenuItemByKey(
     return undefined;
 }
 
-// Hàm lọc hàng theo collectionId
+/***********************
+ * LIST SEARCH TABLE
+ ***********************/
+
+/**
+ *  filter ListSearchTableItem[ ] to get the item by collectionId
+ */
 export function filterByCollectionId(
     items: ListSearchTableItem[],
     collectionId: string
@@ -72,7 +89,9 @@ export function filterByCollectionId(
         : items;
 }
 
-// Hàm lọc hàng theo collectionName
+/**
+ *  filter ListSearchTableItem[] to get the item by collectionName
+ */
 export function filterByCollectionName(
     items: ListSearchTableItem[],
     collectionName: string
@@ -86,7 +105,9 @@ export function filterByCollectionName(
         : items;
 }
 
-// Hàm lọc hàng theo contentGenre
+/**
+ *  filter ListSearchTableItem[] to get the item by contentGenre
+ */
 export function filterByContentGenre(
     items: ListSearchTableItem[],
     contentGenres: string[]
@@ -96,7 +117,9 @@ export function filterByContentGenre(
         : items;
 }
 
-// Hàm lọc hàng theo filterMethod
+/**
+ *  filter ListSearchTableItem[] to get the item by filterMethod
+ */
 export function filterByFilterMethod(
     items: ListSearchTableItem[],
     filterMethods: string[]
@@ -106,7 +129,9 @@ export function filterByFilterMethod(
         : items;
 }
 
-// Hàm lọc hàng theo status
+/**
+ *  filter ListSearchTableItem[] to get the item by status
+ */
 export function filterByStatus(
     items: ListSearchTableItem[],
     statuses: string[]
@@ -116,7 +141,9 @@ export function filterByStatus(
         : items;
 }
 
-// Hàm lọc hàng theo creationTime
+/**
+ *  filter ListSearchTableItem[] to get the item by creationTime
+ */
 export function filterByCreationTime(
     items: ListSearchTableItem[],
     startDate: string,
@@ -133,7 +160,13 @@ export function filterByCreationTime(
         : items;
 }
 
-// MOCK USER FILTER
+/***********************
+ * LIST USER MANAGE
+ ***********************/
+
+/**
+ *  filter user in Mock user list by id + username + email + status + group
+ */
 export function mockUserFilter(
     items: MockUser[],
     filterData: MockUserFilterProp
@@ -174,6 +207,10 @@ export function mockUserFilter(
         : items;
 }
 
+/***********************
+ * COMMON
+ ***********************/
+
 /**
  * is device mobile?
  * @returns {boolean}
@@ -186,7 +223,9 @@ export function isMobileView(): boolean {
     return isScreenSizeMobile;
 }
 
-// MESSAGE
+/**
+ *  show arco toast message
+ */
 export function showMessage(
     status: MessageStatusType,
     config: string | MessageProps
@@ -203,7 +242,9 @@ export function showMessage(
     messageFunction(config);
 }
 
-// ENCRYPT
+/**
+ *  ENCRYPT a string
+ */
 export const encrypt = (str: string | undefined): string => {
     if (str)
         return CryptoJS.AES.encrypt(
@@ -213,7 +254,9 @@ export const encrypt = (str: string | undefined): string => {
     return "";
 };
 
-// DECRYPT
+/**
+ *  DECRYPT a string
+ */
 export const decrypt = (ciphertext: string | undefined): string => {
     if (ciphertext) {
         const bytes = CryptoJS.AES.decrypt(
@@ -225,7 +268,12 @@ export const decrypt = (ciphertext: string | undefined): string => {
     return "";
 };
 
-// CONVERT TO THOUNSAND NUMBER
+/**
+ *  Convert a number | string to k format using numeraljs
+ *  E.g.:
+ *      const number = 12500;
+ *      const formattedNumber = formatThounsandNumber(number); // 12.5k
+ */
 export const formatThounsandNumber = (num: number | string): string => {
     const numAsNumber: number = typeof num === "string" ? parseInt(num) : num;
     if (numAsNumber < 1000) {

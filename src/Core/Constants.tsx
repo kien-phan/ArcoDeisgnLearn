@@ -213,3 +213,9 @@ export const MESSAGESTATUS = {
     WARNING: "warning",
     ERROR: "error",
 } as const;
+
+// HTTP METHOD
+export const METHOD = {
+    GET: "GET",
+    POST: "POST",
+};
