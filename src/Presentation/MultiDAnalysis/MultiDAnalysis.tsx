@@ -1,5 +1,7 @@
+import { memo } from "react";
 import LCSContentStatistic from "./Components/LCSContentStatistic";
 import Overview from "./Components/Overview";
+import RetentionAndConsumption from "./Components/RetentionAndConsumption";
 
 function MultiDAnalysis() {
     return (
@@ -10,8 +12,11 @@ function MultiDAnalysis() {
             <div className="col-span-12 lg:col-span-4">
                 <LCSContentStatistic />
             </div>
+            <div className="col-span-12">
+                <RetentionAndConsumption />
+            </div>
         </section>
     );
 }
 
-export default MultiDAnalysis;
+export default memo(MultiDAnalysis);

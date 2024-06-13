@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface Props {
     title: string;
     icon: React.ReactNode;
@@ -18,4 +20,4 @@ function LegendItem({ title, icon, value }: Props) {
     );
 }
 
-export default LegendItem;
+export default memo(LegendItem);

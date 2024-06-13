@@ -1,6 +1,7 @@
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 import ChartLCS from "./ChartLCS";
 import ChartContentThemeDistribution from "./ChartContentThemeDistribution";
+import { memo } from "react";
 
 function LCSContentStatistic() {
     return (
@@ -17,4 +18,4 @@ function LCSContentStatistic() {
     );
 }
 
-export default LCSContentStatistic;
+export default memo(LCSContentStatistic);

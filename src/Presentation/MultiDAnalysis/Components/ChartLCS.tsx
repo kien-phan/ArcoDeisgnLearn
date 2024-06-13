@@ -1,20 +1,25 @@
 import { Axis, Chart, Coord, Geom, Tooltip } from "bizcharts";
+import { memo, useMemo } from "react";
 
 function ChartLCS() {
-    const data = [
-        {
-            content: "Shared",
-            amount: 5144,
-        },
-        {
-            content: "Comment",
-            amount: 9013,
-        },
-        {
-            content: "Like",
-            amount: 7172,
-        },
-    ];
+    // EXAMPLE DATA
+    const data = useMemo(
+        () => [
+            {
+                content: "Shared",
+                amount: 5144,
+            },
+            {
+                content: "Comment",
+                amount: 9013,
+            },
+            {
+                content: "Like",
+                amount: 7172,
+            },
+        ],
+        []
+    );
 
     return (
         <Chart padding="auto" autoFit height={160} data={data}>
@@ -32,4 +37,4 @@ function ChartLCS() {
     );
 }
 
-export default ChartLCS;
+export default memo(ChartLCS);

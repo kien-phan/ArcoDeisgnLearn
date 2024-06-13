@@ -274,12 +274,17 @@ export const decrypt = (ciphertext: string | undefined): string => {
  *      const number = 12500;
  *      const formattedNumber = formatThounsandNumber(number); // 12.5k
  */
-export const formatThounsandNumber = (num: number | string): string => {
+export const formatThounsandNumber = (
+    num: number | string,
+    isJustComma?: boolean
+): string => {
     const numAsNumber: number = typeof num === "string" ? parseInt(num) : num;
     if (numAsNumber < 1000) {
         return num.toString();
     }
 
-    const formatted = numeral(num).format("0.[0]a").replace(".0", "");
+    const formatted = isJustComma
+        ? numeral(numAsNumber).format("0,0")
+        : numeral(num).format("0.[0]a").replace(".0", "");
     return formatted;
 };

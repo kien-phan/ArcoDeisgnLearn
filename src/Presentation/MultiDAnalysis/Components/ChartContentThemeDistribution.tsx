@@ -1,36 +1,46 @@
 import { Axis, Chart, Coord, Geom, Legend, Tooltip } from "bizcharts";
+import { memo, useCallback, useMemo } from "react";
 
 function ChartContentThemeDistribution() {
-    const getRandomInt = () => {
+    // RANDOM FROM 10 TO 100
+    const getRandomInt = useCallback(() => {
         return Math.floor(Math.random() * (100 - 10 + 1)) + 10;
-    };
+    }, []);
 
-    const data = [
-        { item: "Quốc tế", type: "Văn bản", score: getRandomInt() },
-        { item: "Quốc tế", type: "Hình ảnh", score: getRandomInt() },
-        { item: "Quốc tế", type: "Âm thanh", score: getRandomInt() },
-        { item: "Giải trí", type: "Văn bản", score: getRandomInt() },
-        { item: "Giải trí", type: "Hình ảnh", score: getRandomInt() },
-        { item: "Giải trí", type: "Âm thanh", score: getRandomInt() },
-        { item: "Thể thao", type: "Văn bản", score: getRandomInt() },
-        { item: "Thể thao", type: "Hình ảnh", score: getRandomInt() },
-        { item: "Thể thao", type: "Âm thanh", score: getRandomInt() },
-        { item: "Kinh tế", type: "Văn bản", score: getRandomInt() },
-        { item: "Kinh tế", type: "Hình ảnh", score: getRandomInt() },
-        { item: "Kinh tế", type: "Âm thanh", score: getRandomInt() },
-        { item: "Khoa học", type: "Văn bản", score: getRandomInt() },
-        { item: "Khoa học", type: "Hình ảnh", score: getRandomInt() },
-        { item: "Khoa học", type: "Âm thanh", score: getRandomInt() },
-        { item: "Khác", type: "Văn bản", score: getRandomInt() },
-        { item: "Khác", type: "Hình ảnh", score: getRandomInt() },
-        { item: "Khác", type: "Âm thanh", score: getRandomInt() },
-    ];
-    const cols = {
-        score: {
-            min: 0,
-            max: 100,
-        },
-    };
+    // EXAMPLE DATA
+    const data = useMemo(
+        () => [
+            { item: "Quốc tế", type: "Văn bản", score: getRandomInt() },
+            { item: "Quốc tế", type: "Hình ảnh", score: getRandomInt() },
+            { item: "Quốc tế", type: "Âm thanh", score: getRandomInt() },
+            { item: "Giải trí", type: "Văn bản", score: getRandomInt() },
+            { item: "Giải trí", type: "Hình ảnh", score: getRandomInt() },
+            { item: "Giải trí", type: "Âm thanh", score: getRandomInt() },
+            { item: "Thể thao", type: "Văn bản", score: getRandomInt() },
+            { item: "Thể thao", type: "Hình ảnh", score: getRandomInt() },
+            { item: "Thể thao", type: "Âm thanh", score: getRandomInt() },
+            { item: "Kinh tế", type: "Văn bản", score: getRandomInt() },
+            { item: "Kinh tế", type: "Hình ảnh", score: getRandomInt() },
+            { item: "Kinh tế", type: "Âm thanh", score: getRandomInt() },
+            { item: "Khoa học", type: "Văn bản", score: getRandomInt() },
+            { item: "Khoa học", type: "Hình ảnh", score: getRandomInt() },
+            { item: "Khoa học", type: "Âm thanh", score: getRandomInt() },
+            { item: "Khác", type: "Văn bản", score: getRandomInt() },
+            { item: "Khác", type: "Hình ảnh", score: getRandomInt() },
+            { item: "Khác", type: "Âm thanh", score: getRandomInt() },
+        ],
+        []
+    );
+
+    // SCALE
+    const cols = useMemo(() => {
+        return {
+            score: {
+                min: 0,
+                max: 100,
+            },
+        };
+    }, []);
 
     return (
         <Chart data={data} padding="auto" autoFit scale={cols} height={200}>
@@ -50,4 +60,4 @@ function ChartContentThemeDistribution() {
     );
 }
 
-export default ChartContentThemeDistribution;
+export default memo(ChartContentThemeDistribution);

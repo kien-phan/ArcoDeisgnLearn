@@ -1,7 +1,7 @@
 import { Card, Skeleton } from "@arco-design/web-react";
-import { IconArrowDown, IconArrowUp } from "@arco-design/web-react/icon";
 import { memo, useEffect, useMemo, useState } from "react";
 import { PublicOpinionAnalysisInterface } from "src/Core";
+import ValueChangeCpn from "src/Core/Components/ValueChangeCpn";
 import { useAppSelector } from "src/Data/DataSource/Api/LocalDB/reduxHooks";
 
 const bgGradientClasses = [
@@ -61,7 +61,7 @@ function PublicOpinionAnalysisCard({
                             {amount.toLocaleString("en-US")}
                         </span>
                     </Skeleton>
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="flex flex-row gap-STANDARDMARGINANDPADDING items-center justify-center">
                         <h4 className="text-xs">Yesterday</h4>
                         <Skeleton
                             animation
@@ -69,22 +69,7 @@ function PublicOpinionAnalysisCard({
                             text={{ rows: 1 }}
                             className="[&_.arco-skeleton-text-row]:!w-10 [&_.arco-skeleton-text-row]:h-6 w-10 h-6"
                         >
-                            <div
-                                className={`flex flex-row justify-center items-center gap-1 text-sm ${
-                                    todayChange >= 0
-                                        ? "text-green-600"
-                                        : "text-red-600"
-                                }`}
-                            >
-                                <span>
-                                    {todayChange.toLocaleString("en-US")}
-                                </span>
-                                {todayChange > 0 ? (
-                                    <IconArrowUp className="font-bold" />
-                                ) : (
-                                    <IconArrowDown className="font-bold" />
-                                )}
-                            </div>
+                            <ValueChangeCpn todayChange={todayChange} />
                         </Skeleton>
                     </div>
                 </div>
