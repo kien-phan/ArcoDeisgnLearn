@@ -18,6 +18,7 @@ interface Props {
     pagination: PaginationProps;
     handleChangeTable: (pagination: PaginationProps) => void;
 }
+
 function TableUserManage({
     loading,
     data,
@@ -25,28 +26,40 @@ function TableUserManage({
     handleChangeTable,
 }: Props) {
     // CALCULATE WIDTH
-    const idColumnWidth = 80;
+    const idColumnWidth = useMemo(() => 80, []);
+
     const columnWidthExceptIdFunc = useCallback(() => {
         const siderWidth = useWidthElement([`${ELEMENT_ID.SIDER}`]);
+        if (siderWidth === undefined) {
+            console.error("siderWidth is undefined");
+            return 250;
+        }
+
+        const standardContainerPaddingX =
+            parseInt(
+                tailwindConfig?.theme?.extend?.spacing
+                    ?.STANDARDCONTAINERPADDINGX,
+                10
+            ) || 0;
+
+        const mdScreenWidth =
+            parseInt(tailwindConfig?.theme?.screens?.md, 10) || 0;
+
         const width =
             (window.innerWidth -
-                parseInt(
-                    tailwindConfig.theme.extend.spacing
-                        .STANDARDCONTAINERPADDINGX,
-                    10
-                ) *
-                    4 -
+                standardContainerPaddingX * 4 -
                 siderWidth -
                 idColumnWidth) /
             4;
-        if (window.innerWidth > parseInt(tailwindConfig.theme.screens.md, 10)) {
+
+        if (window.innerWidth > mdScreenWidth) {
             return width;
         }
         return 250;
-    }, []);
+    }, [idColumnWidth]);
+
     const columnWidthExceptId = columnWidthExceptIdFunc();
 
-    // COLUMN
     const columns: ColumnProps<MockUser>[] = useMemo(() => {
         return [
             {
@@ -90,7 +103,7 @@ function TableUserManage({
                 render: (_col, record) => <StatusCpn mockUser={record} />,
             },
         ] as ColumnProps<MockUser>[];
-    }, [columnWidthExceptId]);
+    }, [columnWidthExceptId, idColumnWidth]);
 
     return (
         <div id={ELEMENT_ID?.TABLE}>

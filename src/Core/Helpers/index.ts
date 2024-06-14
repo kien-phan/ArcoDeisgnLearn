@@ -288,3 +288,21 @@ export const formatThounsandNumber = (
         : numeral(num).format("0.[0]a").replace(".0", "");
     return formatted;
 };
+
+/**
+ *  find first html element by query selector in quries array
+ *  E.g.:
+ *      const queries = ['.class1', '.class2']
+ *      if not found element of class1 then find element of class 2. else => null
+ */
+export const findFirstNonNullElement = (
+    queries: string[]
+): HTMLElement | null => {
+    for (const query of queries) {
+        const element = document.querySelector(query) as HTMLElement | null;
+        if (element !== null) {
+            return element;
+        }
+    }
+    return null;
+};

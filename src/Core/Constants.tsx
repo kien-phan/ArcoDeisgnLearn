@@ -219,3 +219,9 @@ export const METHOD = {
     GET: "GET",
     POST: "POST",
 };
+
+// LIST USER MANAGE LIMIT PER PAGE
+export const LISTUSERMANAGETABLELIMIT = {
+    MOBILELIMIT: 10,
+    DESKTOPLIMIT: 20,
+};

@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
     ASSETFILEPATHS,
+    LISTUSERMANAGETABLELIMIT,
     MockUserFilterProp,
     TANSTACKQUERYKEYS,
     mockUserFilter,
@@ -52,13 +53,38 @@ function ListUserManageViewModel() {
     // USE CASES
     const getMockUsersUseCase = new GetMockUsers(mockUserRepositoryImpl);
 
+    // HANDLE CHANGE LIMIT
     const handleChangeLimitOnResize = useDebouncedFunction(() => {
         const newLimit =
             window.innerWidth > parseInt(tailwindConfig.theme.screens.md, 10)
-                ? 20
-                : 10;
+                ? LISTUSERMANAGETABLELIMIT.DESKTOPLIMIT
+                : LISTUSERMANAGETABLELIMIT.MOBILELIMIT;
         setLimit(newLimit);
     }, 100);
+
+    // USE QUERY
+    const mockUserQuery = useQuery({
+        queryKey: [
+            TANSTACKQUERYKEYS.MOCKUSERS,
+            pagination.current,
+            limit,
+            filterData.searchValue || null,
+        ],
+        queryFn: async () => {
+            console.log(
+                "query",
+                TANSTACKQUERYKEYS.MOCKUSERS,
+                pagination.current,
+                limit,
+                filterData.searchValue || null
+            );
+
+            return handleGetAndFilterMockUsers(pagination.current);
+        },
+        staleTime: 1000,
+        keepPreviousData: true,
+        retry: 0,
+    });
 
     // USE EFFECT
     useEffect(() => {
@@ -66,12 +92,17 @@ function ListUserManageViewModel() {
             queryKey: [
                 TANSTACKQUERYKEYS.MOCKUSERS,
                 pagination.current,
-                filterData.searchValue,
+                window.innerWidth >
+                parseInt(tailwindConfig.theme.screens.md, 10)
+                    ? LISTUSERMANAGETABLELIMIT.MOBILELIMIT
+                    : LISTUSERMANAGETABLELIMIT.DESKTOPLIMIT,
+                filterData.searchValue || null,
             ],
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterData.searchValue, limit]);
 
+    // LISTEN TO RESIZE EVENT
     useEffect(() => {
         window.addEventListener("resize", () => handleChangeLimitOnResize());
 
@@ -81,6 +112,15 @@ function ListUserManageViewModel() {
             );
         };
     }, [handleChangeLimitOnResize]);
+
+    // CHANGE PAGINATION WHEN DATA CHANGE
+    useEffect(
+        () => {
+            handleChangeTable({ ...pagination, pageSize: limit });
+        },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [mockUserQuery.data?.data.list]
+    );
 
     // HANDLE GET USER AND FILTER
     const handleGetAndFilterMockUsers = useCallback(
@@ -114,22 +154,6 @@ function ListUserManageViewModel() {
         [limit, filterData]
     );
 
-    // USE QUERY
-    const mockUserQuery = useQuery({
-        queryKey: [
-            TANSTACKQUERYKEYS.MOCKUSERS,
-            pagination.current,
-            limit,
-            filterData.searchValue,
-        ],
-        queryFn: async () => {
-            return handleGetAndFilterMockUsers(pagination.current);
-        },
-        staleTime: 1000 * 10,
-        keepPreviousData: true,
-        retry: 0,
-    });
-
     // HANDLE CHANGE PAGE
     const handleChangeTable = useCallback((pagination: PaginationProps) => {
         const { current, pageSize } = pagination || {};
@@ -141,6 +165,8 @@ function ListUserManageViewModel() {
             }));
         }
     }, []);
+
+    console.log(pagination, "pagination");
 
     // HANDLE SEARCH
     const handleSearch = useCallback((value: string) => {

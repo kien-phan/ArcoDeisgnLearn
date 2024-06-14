@@ -38,7 +38,7 @@ function RetentionAndConsumption() {
     return (
         <div className="grid grid-cols-12 gap-STANDARDMARGINANDPADDING">
             {RetentionAndConsumptionList.map((item) => (
-                <div className="col-span-3">
+                <div className="col-span-12 sm:col-span-6 lg:col-span-3">
                     <RetentionAndConsumptionItem
                         title={item.title}
                         value={item.value}

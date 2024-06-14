@@ -1,17 +1,8 @@
 import { useState, useEffect } from "react";
+import { findFirstNonNullElement } from "../Helpers";
 
 export const useWidthElement = (queries: string[]) => {
     const [elementWidth, setElementWidth] = useState<number>(0);
-
-    const findFirstNonNullElement = (queries: string[]): HTMLElement | null => {
-        for (const query of queries) {
-            const element = document.querySelector(query) as HTMLElement | null;
-            if (element !== null) {
-                return element;
-            }
-        }
-        return null;
-    };
 
     useEffect(() => {
         const element = findFirstNonNullElement(queries);
