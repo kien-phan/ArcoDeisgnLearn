@@ -20,10 +20,10 @@ function Form1({ handleChangeCurrentStep }: Props) {
                 ref={formRef}
                 autoComplete="off"
                 onSubmit={() => handleChangeCurrentStep(2)}
-                className="[&_.arco-form-label-item]:self-start [&_.arco-form-item-wrapper]:ml-auto [&_.arco-form-item-wrapper]:mr-auto [&_.arco-row]:flex-col [&_.arco-row]:md:flex-row [&_label]:flex [&_label]:flex-row [&_label]:justify-end [&_label]:items-center [&_.arco-form-item-symbol]:me-2 [&_.arco-col-5]:w-fit [&_.arco-col-5]:md:w-1/5 [&_.arco-col-19]:md:w-4/5 [&_.arco-row-align-start]:md:justify-start justify-center items-center"
+                className="[&_.arco-form-label-item]:self-start [&_.arco-form-item-wrapper]:ml-auto [&_.arco-form-item-wrapper]:mr-auto [&_.arco-form-item-wrapper]:md:ml-auto [&_.arco-form-item-wrapper]:md:mr-auto [&_.arco-row]:flex-col [&_.arco-row]:md:flex-row [&_label]:flex [&_label]:flex-row [&_label]:justify-end [&_label]:items-center [&_.arco-col-5]:w-fit [&_.arco-col-5]:md:w-1/5 [&_.arco-col-19]:w-full [&_.arco-col-19]:md:w-4/5 [&_.arco-row-align-start]:md:justify-start justify-center items-center"
             >
                 <Form.Item
-                    label={<div className="text-nowrap">Event name</div>}
+                    label={<div>Event name</div>}
                     field="EventName"
                     rules={[{ required: true, maxLength: 20 }]}
                     className=""
@@ -32,7 +32,7 @@ function Form1({ handleChangeCurrentStep }: Props) {
                 </Form.Item>
 
                 <Form.Item
-                    label={<div className="text-nowrap">Channel Type</div>}
+                    label={<div>Channel Type</div>}
                     field="ChannelType"
                     rules={[{ required: true }]}
                     className=""
@@ -43,7 +43,7 @@ function Form1({ handleChangeCurrentStep }: Props) {
                 </Form.Item>
 
                 <Form.Item
-                    label={<div className="text-nowrap">Promotion time</div>}
+                    label={<div>Promotion time</div>}
                     required
                     field="PromotionTime"
                     className=""
@@ -53,7 +53,7 @@ function Form1({ handleChangeCurrentStep }: Props) {
                 </Form.Item>
 
                 <Form.Item
-                    label={<div className="text-nowrap">Promotion URL</div>}
+                    label={<div>Promotion URL</div>}
                     required
                     rules={[{ required: true }]}
                     field="PromotionURL"

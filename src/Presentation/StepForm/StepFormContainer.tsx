@@ -6,7 +6,7 @@ import Form2 from "./Components/Form2";
 import Form3 from "./Components/Form3";
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 
-function FormContainer() {
+function StepFormContainer() {
     const [currentStep, setCurrentStep] = useState(1);
     const [windowInnerWidth, setWindowInnerWidth] = useState(
         window?.innerWidth
@@ -79,4 +79,4 @@ function FormContainer() {
     );
 }
 
-export default FormContainer;
+export default StepFormContainer;

@@ -82,3 +82,12 @@ export interface PublicOpinionAnalysisInterface {
     todayChange: number;
     chart?: React.ReactNode;
 }
+
+// GROUPFORM PARAMETER ITEM PROPS
+export interface GroupFormParameterItemPropsInterface {
+    label: string;
+    placeholder: string;
+    before?: React.ReactNode;
+    after?: React.ReactNode;
+    options?: string[];
+}

@@ -13,11 +13,12 @@ import Login from "src/Presentation/Auth/Login";
 import Register from "src/Presentation/Auth/Register";
 import ListUserManage from "src/Presentation/ListUserManage";
 import UserSetting from "src/Presentation/UserSetting";
-import FormContainer from "src/Presentation/Form/FormContainer";
 import UserInfoContainer from "src/Presentation/UserInfo/UserInfoContainer";
 import ListCard from "src/Presentation/ListCard";
 import MultiDAnalysis from "src/Presentation/MultiDAnalysis";
 import Analysis from "src/Presentation/Analysis";
+import StepFormContainer from "src/Presentation/StepForm/StepFormContainer";
+import GroupFormContainer from "src/Presentation/GroupForm/GroupFormContainer";
 
 // ROUTES
 export const AUTHROUTE = "/auth";
@@ -32,7 +33,10 @@ export const ROUTES = {
         SEARCH_TABLE: "/list/search-table",
         LIST_CARD: "/list/card-list",
     },
-    FORM: "/form",
+    FORM: {
+        GROUPFORM: "/form/group",
+        STEPFORM: "/form/step",
+    },
     USER: {
         USER_SETTING: "/user/user-setting",
         USER_INFO: "/user/user-info",
@@ -64,7 +68,8 @@ export const PRIVATE_ROUTE = [
     { path: ROUTES.LIST.LIST_CARD, element: <ListCard /> },
     { path: ROUTES.USER.USER_SETTING, element: <UserSetting /> },
     { path: ROUTES.USER.USER_INFO, element: <UserInfoContainer /> },
-    { path: ROUTES.FORM, element: <FormContainer /> },
+    { path: ROUTES.FORM.GROUPFORM, element: <GroupFormContainer /> },
+    { path: ROUTES.FORM.STEPFORM, element: <StepFormContainer /> },
 ];
 
 // PUBLIC ROUTE
@@ -133,9 +138,20 @@ export const GetLeftMenuDatas = (locale: string) => {
         },
         {
             key: "form",
-            label: translate("form", locale),
             icon: <IconSettings className="text-xl" />,
-            path: ROUTES?.FORM,
+            label: translate("form", locale),
+            subList: [
+                {
+                    key: "group-form",
+                    label: translate("Group Form", locale),
+                    path: ROUTES?.FORM?.GROUPFORM,
+                },
+                {
+                    key: "step-form",
+                    label: translate("Step Form", locale),
+                    path: ROUTES?.FORM?.STEPFORM,
+                },
+            ],
         },
         {
             key: "user",
