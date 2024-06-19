@@ -30,8 +30,6 @@ function ChartBarRaS() {
             <Axis name="value" visible={false} />
             <Tooltip
                 children={(_title, items) => {
-                    console.log(items);
-
                     return (
                         <div className="p-2 font-bold">{items![0].value}</div>
                     );

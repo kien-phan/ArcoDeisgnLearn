@@ -31,7 +31,6 @@ function TableUserManage({
     const columnWidthExceptIdFunc = useCallback(() => {
         const siderWidth = useWidthElement([`${ELEMENT_ID.SIDER}`]);
         if (siderWidth === undefined) {
-            console.error("siderWidth is undefined");
             return 250;
         }
 

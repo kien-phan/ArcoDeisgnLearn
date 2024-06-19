@@ -26,7 +26,7 @@ function LayoutComponent() {
         <Layout className="min-h-[100vh] bg-[color:var(--color-fill-2)]">
             <Header
                 id={ELEMENT_ID.HEADER}
-                className="bg-[color:var(--color-bg-2)] text-center h-HEADERHEIGHT fixed left-0 top-0 right-0 z-50 border-b border-solid border-b-[color:var(--color-border)]"
+                className="bg-[color:var(--color-bg-2)] text-center h-HEADERHEIGHT fixed left-0 top-0 right-0 z-[100] border-b border-solid border-b-[color:var(--color-border)]"
             >
                 <HeaderComponent pathName={location.pathname} />
             </Header>

@@ -53,8 +53,6 @@ function LoginViewModel() {
             },
             {
                 onSuccess: (_data) => {
-                    console.log(_data);
-
                     if (_data?.success) {
                         const realData = _data?.data as UserLoginResponseData;
 
@@ -78,8 +76,6 @@ function LoginViewModel() {
                         dispatch(loginUser(newUser));
                         navigate(ROUTES?.DASHBOARD);
                     } else {
-                        console.log(_data);
-
                         setMessageErr(_data?.errorMsg!);
                     }
                 },

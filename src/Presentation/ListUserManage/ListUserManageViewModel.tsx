@@ -71,14 +71,6 @@ function ListUserManageViewModel() {
             filterData.searchValue || null,
         ],
         queryFn: async () => {
-            console.log(
-                "query",
-                TANSTACKQUERYKEYS.MOCKUSERS,
-                pagination.current,
-                limit,
-                filterData.searchValue || null
-            );
-
             return handleGetAndFilterMockUsers(pagination.current);
         },
         staleTime: 1000,
@@ -165,8 +157,6 @@ function ListUserManageViewModel() {
             }));
         }
     }, []);
-
-    console.log(pagination, "pagination");
 
     // HANDLE SEARCH
     const handleSearch = useCallback((value: string) => {

@@ -7,8 +7,6 @@ interface Props {
 }
 
 function SimpleInput({ placeholder, before, after }: Props) {
-    console.log(after);
-
     return (
         <Input
             addBefore={before}

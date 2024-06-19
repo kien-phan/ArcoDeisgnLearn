@@ -38,7 +38,7 @@ function ContentContainer({ pathName }: Props) {
                 width={siderWidth}
                 trigger={null}
                 collapsedWidth={siderWidth}
-                className="fixed top-0 bottom-0 left-0 pt-HEADERHEIGHT"
+                className="fixed top-0 bottom-0 left-0 pt-HEADERHEIGHT z-[99]"
             >
                 <div
                     id={ELEMENT_ID.SIDER}
@@ -61,7 +61,7 @@ function ContentContainer({ pathName }: Props) {
                 </Content>
                 <Footer
                     id={ELEMENT_ID?.FOOTER}
-                    className="mt-2 text-xs uppercase flex flex-row justify-center items-center"
+                    className="mt-STANDARDMARGINANDPADDING text-xs uppercase flex flex-row justify-center items-center"
                 >
                     version 0.0.0
                 </Footer>
