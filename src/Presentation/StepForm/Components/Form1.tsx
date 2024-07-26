@@ -64,7 +64,7 @@ function Form1({ handleChangeCurrentStep }: Props) {
                 </Form.Item>
 
                 <Form.Item
-                    label=" "
+                    label=""
                     className="[&_.arco-form-item-control-children]:flex [&_.arco-form-item-control-children]:justify-end [&_.arco-form-item-control-children]:md:justify-start"
                 >
                     <Button type="primary" htmlType="submit">
