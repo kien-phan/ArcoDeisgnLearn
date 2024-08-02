@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+
 import {
     Button,
     Form,
@@ -7,7 +9,6 @@ import {
     Switch,
 } from "@arco-design/web-react";
 import TextAreaRef from "@arco-design/web-react/es/Input/textarea";
-import { useRef, useState } from "react";
 
 interface Props {
     handleChangeCurrentStep: (step: number) => void;

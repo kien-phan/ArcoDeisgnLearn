@@ -1,4 +1,5 @@
 import { Avatar } from "@arco-design/web-react";
+
 const AvatarGroup = Avatar.Group;
 
 function AvatarGroupCpn() {

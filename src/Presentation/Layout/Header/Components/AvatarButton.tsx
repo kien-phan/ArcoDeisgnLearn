@@ -1,7 +1,9 @@
-import { Avatar } from "@arco-design/web-react";
-import { IconPoweroff } from "@arco-design/web-react/icon";
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { Avatar } from "@arco-design/web-react";
+import { IconPoweroff } from "@arco-design/web-react/icon";
+
 import { LeftMenuInterface, ROUTES } from "src/Core";
 import DropDownComponent from "src/Core/Components/Dropdown";
 import DropList from "src/Core/Components/DropList";

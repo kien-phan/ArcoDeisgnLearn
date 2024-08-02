@@ -1,5 +1,6 @@
-import { Axis, Chart, Legend, Line, Tooltip } from "bizcharts";
 import { memo, useMemo } from "react";
+
+import { Axis, Chart, Legend, Line, Tooltip } from "bizcharts";
 
 function DVLineChart() {
     const data = useMemo(

@@ -1,6 +1,8 @@
+import { memo, useMemo } from "react";
+
 import { Divider, Space, Typography } from "@arco-design/web-react";
 import { IconCaretUp } from "@arco-design/web-react/icon";
-import { memo, useMemo } from "react";
+
 import { DataCategoryItemInterface } from "src/Core";
 import CommentSVG from "src/Core/Components/SVGs/CommentSVG";
 import ContentInMarketSVG from "src/Core/Components/SVGs/ContentInMarketSVG";

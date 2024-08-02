@@ -1,5 +1,6 @@
-import { Chart, Interval, Interaction, Tooltip, Axis } from "bizcharts";
 import { memo } from "react";
+import { Chart, Interval, Interaction, Tooltip, Axis } from "bizcharts";
+
 import { formatThounsandNumber } from "src/Core";
 import tailwindConfig from "../../../../tailwind.config";
 

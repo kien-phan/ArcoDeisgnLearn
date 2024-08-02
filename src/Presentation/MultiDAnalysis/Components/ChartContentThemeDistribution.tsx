@@ -1,5 +1,6 @@
-import { Axis, Chart, Coord, Geom, Legend, Tooltip } from "bizcharts";
 import { memo, useCallback, useMemo } from "react";
+
+import { Axis, Chart, Coord, Geom, Legend, Tooltip } from "bizcharts";
 
 function ChartContentThemeDistribution() {
     // RANDOM FROM 10 TO 100
@@ -29,6 +30,7 @@ function ChartContentThemeDistribution() {
             { item: "Khác", type: "Hình ảnh", score: getRandomInt() },
             { item: "Khác", type: "Âm thanh", score: getRandomInt() },
         ],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         []
     );
 

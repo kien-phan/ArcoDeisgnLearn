@@ -1,5 +1,7 @@
-import { Card, Skeleton } from "@arco-design/web-react";
 import { memo, useEffect, useMemo, useState } from "react";
+
+import { Card, Skeleton } from "@arco-design/web-react";
+
 import { PublicOpinionAnalysisInterface } from "src/Core";
 import ValueChangeCpn from "src/Core/Components/ValueChangeCpn";
 import { useAppSelector } from "src/Data/DataSource/Api/LocalDB/reduxHooks";

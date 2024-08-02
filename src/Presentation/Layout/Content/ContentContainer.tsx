@@ -1,15 +1,16 @@
-import "@arco-design/web-react/dist/css/arco.css";
-import { Layout } from "@arco-design/web-react";
 import { Outlet } from "react-router-dom";
 
-const Content = Layout.Content;
-const Sider = Layout.Sider;
-const Footer = Layout.Footer;
+import "@arco-design/web-react/dist/css/arco.css";
+import { Layout } from "@arco-design/web-react";
 
 import SiderChildComponent from "../Sider";
 import Breadcrumb from "src/Core/Components/BreadcrumbCpn";
 import { AUTHROUTE, ELEMENT_ID, ROUTES } from "src/Core";
 import useViewModel from "../LayoutViewModel";
+
+const Content = Layout.Content;
+const Sider = Layout.Sider;
+const Footer = Layout.Footer;
 
 interface Props {
     pathName: string;

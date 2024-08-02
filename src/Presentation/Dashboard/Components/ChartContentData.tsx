@@ -1,6 +1,8 @@
+import { memo } from "react";
+
 import { Chart, Axis, LineAdvance } from "bizcharts";
 import { AxisCfg } from "bizcharts/lib/interface";
-import { memo } from "react";
+
 import { formatThounsandNumber } from "src/Core";
 
 // const { Line } = Guide;

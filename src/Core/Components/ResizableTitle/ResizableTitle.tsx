@@ -1,4 +1,5 @@
 import { Resizable } from "react-resizable";
+
 import CustomResizeHandle from "src/Core/Components/CustomResizeHandle";
 
 function ResizableTitle(props: any) {

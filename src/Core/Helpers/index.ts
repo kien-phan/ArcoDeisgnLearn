@@ -1,4 +1,5 @@
 import CryptoJS from "crypto-js";
+import numeral from "numeral";
 import { Message, MessageProps } from "@arco-design/web-react";
 
 import {
@@ -10,7 +11,6 @@ import {
 } from "src/Core";
 import { MockUser } from "src/Domain/Model/MockUser";
 import tailwindConfig from "../../../tailwind.config";
-import numeral from "numeral";
 
 /***********************
  * BREADCRUMB

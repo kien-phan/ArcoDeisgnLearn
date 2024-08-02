@@ -1,10 +1,11 @@
+import { memo } from "react";
+
 import { PublicOpinionAnalysisInterface } from "src/Core";
 import PublicOpinionAnalysisCard from "./PublicOpinionAnalysisCard";
 import DVLineChart from "./DVLineChart";
 import DVBarChart from "./DVBarChart";
 import DVPieChart from "./DVPieChart";
 import WhiteContainer from "src/Core/Components/WhiteContainer";
-import { memo } from "react";
 
 function PublicOpinionAnalysis() {
     const data: PublicOpinionAnalysisInterface[] = [

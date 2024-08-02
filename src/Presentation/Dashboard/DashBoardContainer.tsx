@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import LeftDashboardComponent from "./Components/LeftDashboardComponent";
 import RightDashboardComponent from "./Components/RightDashboardComponent";
-
 import { ROUTES } from "src/Core";
 
 // eslint-disable-next-line react-refresh/only-export-components

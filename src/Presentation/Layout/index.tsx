@@ -1,13 +1,15 @@
 import { useEffect } from "react";
-import "@arco-design/web-react/dist/css/arco.css";
-import { Layout } from "@arco-design/web-react";
 import { useLocation } from "react-router-dom";
 
-const Header = Layout.Header;
+import "@arco-design/web-react/dist/css/arco.css";
+import { Layout } from "@arco-design/web-react";
+
 import HeaderComponent from "./Header";
 import useViewModel from "./LayoutViewModel";
 import { ELEMENT_ID } from "src/Core";
 import ContentContainer from "./Content/ContentContainer";
+
+const Header = Layout.Header;
 
 function LayoutComponent() {
     //LOCATION

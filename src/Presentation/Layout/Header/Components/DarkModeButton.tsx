@@ -1,8 +1,8 @@
 import { Button, Tooltip } from "@arco-design/web-react";
 import { IconSun, IconMoon } from "@arco-design/web-react/icon";
+
 import { translate } from "src/Core";
 import { changeThemeDark } from "src/Data/DataSource/Api/LocalDB/Slices/CommonSlice";
-
 import {
     useAppDispatch,
     useAppSelector,
@@ -20,7 +20,10 @@ function DarkModeButton() {
 
     return (
         <Tooltip
-            content={translate(isDark ? "darkModeButtonTooltip" : "lightModeButtonTooltip", locale)}
+            content={translate(
+                isDark ? "darkModeButtonTooltip" : "lightModeButtonTooltip",
+                locale
+            )}
         >
             <Button
                 shape="round"

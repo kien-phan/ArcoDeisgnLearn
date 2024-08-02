@@ -1,7 +1,9 @@
+import { useState } from "react";
+
 import { Button } from "@arco-design/web-react";
 import { IconSettings } from "@arco-design/web-react/icon";
+
 import SettingDrawer from "src/Core/Components/Drawer/SettingDrawer";
-import { useState } from "react";
 
 function SettingButton() {
     // STATE

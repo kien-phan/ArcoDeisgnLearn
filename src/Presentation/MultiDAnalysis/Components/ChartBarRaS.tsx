@@ -1,5 +1,6 @@
-import { Chart, Interval, Axis, Tooltip, Legend } from "bizcharts";
 import { memo, useMemo } from "react";
+
+import { Chart, Interval, Axis, Tooltip, Legend } from "bizcharts";
 
 function ChartBarRaS() {
     // FLAG TO CHANGE BAR COLOR

@@ -1,5 +1,6 @@
 import NodataSVG from "src/Core/Components/SVGs/NodataSVG";
 import WhiteContainer from "src/Core/Components/WhiteContainer";
+
 function InsiteNoti() {
     return (
         <WhiteContainer>

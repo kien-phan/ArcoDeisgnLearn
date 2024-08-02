@@ -1,6 +1,7 @@
+import { memo } from "react";
+
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 import ChartCPS from "./ChartCPS";
-import { memo } from "react";
 
 function ContentPublishingSource() {
     return (

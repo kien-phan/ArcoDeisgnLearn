@@ -1,5 +1,6 @@
-import { Axis, Chart, Coord, Geom, Tooltip } from "bizcharts";
 import { memo, useMemo } from "react";
+
+import { Axis, Chart, Coord, Geom, Tooltip } from "bizcharts";
 
 function ChartLCS() {
     // EXAMPLE DATA

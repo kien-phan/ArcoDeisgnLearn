@@ -1,5 +1,6 @@
-import { Axis, Chart, Path, Tooltip } from "bizcharts";
 import { memo, useMemo } from "react";
+
+import { Axis, Chart, Path, Tooltip } from "bizcharts";
 
 function ChartBarRaS() {
     // EXAMPLE DATA

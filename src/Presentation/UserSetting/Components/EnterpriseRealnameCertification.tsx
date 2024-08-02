@@ -1,4 +1,5 @@
 import { Tag } from "@arco-design/web-react";
+
 import tailwindConfig from "../../../../tailwind.config";
 
 function EnterpriseRealnameCertification() {

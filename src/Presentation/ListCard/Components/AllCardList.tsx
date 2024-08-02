@@ -4,8 +4,8 @@ import { IconPlus } from "@arco-design/web-react/icon";
 
 import ContentQualityItem from "./ContentQualityItem";
 import ServiceOpening from "./ServiceOpeningItem";
-import { RulePresetInterface, ServiceOpeningInterface } from "src/Core";
 import RulePresetItem from "./RulePresetItem";
+import { RulePresetInterface, ServiceOpeningInterface } from "src/Core";
 
 interface Props {
     contentQuality?: boolean;

@@ -1,5 +1,6 @@
-import { Chart, Facet, Legend } from "bizcharts";
 import { useMemo } from "react";
+
+import { Chart, Facet, Legend } from "bizcharts";
 
 import tailwindConfig from "../../../../tailwind.config";
 import { useWidthElement } from "src/Core/Hooks/useWidthElement";

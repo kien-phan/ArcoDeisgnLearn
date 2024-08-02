@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { findFirstNonNullElement } from "../Helpers";
 
 export const useWidthElement = (queries: string[]) => {

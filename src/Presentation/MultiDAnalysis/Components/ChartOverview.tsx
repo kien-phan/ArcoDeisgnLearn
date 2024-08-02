@@ -1,5 +1,6 @@
-import { Chart, Legend, LineAdvance } from "bizcharts";
 import { memo, useMemo } from "react";
+
+import { Chart, Legend, LineAdvance } from "bizcharts";
 
 function ChartOverview() {
     // EXAMPLE DATA

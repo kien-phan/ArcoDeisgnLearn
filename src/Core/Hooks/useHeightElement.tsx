@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { findFirstNonNullElement } from "../Helpers";
 
 export const useHeightElement = (queries: string[]) => {

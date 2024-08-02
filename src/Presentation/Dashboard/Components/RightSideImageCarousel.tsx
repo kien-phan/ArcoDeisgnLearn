@@ -1,5 +1,6 @@
-import { Carousel } from "@arco-design/web-react";
 import { memo, useMemo } from "react";
+
+import { Carousel } from "@arco-design/web-react";
 
 function RightSideImageCarousel() {
     const imageSrc = useMemo(

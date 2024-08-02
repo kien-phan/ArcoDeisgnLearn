@@ -1,4 +1,5 @@
 import { memo } from "react";
+
 import { Table, TableColumnProps } from "@arco-design/web-react";
 
 function TableCpn() {

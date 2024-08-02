@@ -1,7 +1,9 @@
+import { memo, useState } from "react";
+
 import { Switch, Tag } from "@arco-design/web-react";
+
 import { RulePresetInterface } from "src/Core";
 import tailwindConfig from "../../../../tailwind.config";
-import { memo, useState } from "react";
 import CardContainer from "./CardContainer";
 
 function RulePresetItem({ title, content, status }: RulePresetInterface) {

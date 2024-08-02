@@ -1,5 +1,6 @@
-import { Chart, Interval, Axis, Tooltip, Legend } from "bizcharts";
 import { memo } from "react";
+
+import { Chart, Interval, Axis, Tooltip, Legend } from "bizcharts";
 
 const data = [
     { type: "A", value: 3 },

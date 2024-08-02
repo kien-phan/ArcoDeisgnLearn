@@ -1,4 +1,5 @@
 import { memo } from "react";
+
 import { formatThounsandNumber } from "src/Core";
 import ValueChangeCpn from "src/Core/Components/ValueChangeCpn";
 import WhiteContainer from "src/Core/Components/WhiteContainer";

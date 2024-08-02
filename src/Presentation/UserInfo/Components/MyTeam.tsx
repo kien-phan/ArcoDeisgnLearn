@@ -1,4 +1,5 @@
 import { Avatar, Divider } from "@arco-design/web-react";
+
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 
 function MyTeam() {

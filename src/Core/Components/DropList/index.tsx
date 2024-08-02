@@ -1,5 +1,7 @@
-import { Divider, Menu } from "@arco-design/web-react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+
+import { Divider, Menu } from "@arco-design/web-react";
+
 import { LeftMenuInterface } from "src/Core";
 
 const SubMenu = Menu.SubMenu;

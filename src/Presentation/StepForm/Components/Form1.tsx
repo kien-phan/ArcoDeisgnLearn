@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import {
     Button,
     DatePicker,
@@ -6,7 +8,6 @@ import {
     Input,
     Select,
 } from "@arco-design/web-react";
-import { useRef } from "react";
 
 interface Props {
     handleChangeCurrentStep: (step: number) => void;

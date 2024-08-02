@@ -1,9 +1,9 @@
 import { memo, useState } from "react";
 
 import { Button, Divider, Radio, Typography } from "@arco-design/web-react";
+
 import DataCategories from "./DataCategories";
 import ChartContentData from "./ChartContentData";
-
 import TableCpn from "./TableCpn";
 import ChartContentCategory from "./ChartContentCategory";
 

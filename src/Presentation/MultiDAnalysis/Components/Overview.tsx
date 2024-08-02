@@ -1,10 +1,12 @@
+import { memo, useMemo } from "react";
+
 import {
     IconEdit,
     IconHeart,
     IconThumbUp,
     IconUser,
 } from "@arco-design/web-react/icon";
-import { memo, useMemo } from "react";
+
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 import LegendItem from "./LegendItem";
 import ChartOverview from "./ChartOverview";

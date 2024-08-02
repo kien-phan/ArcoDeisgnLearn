@@ -1,5 +1,6 @@
 import { Avatar, Button, Tabs, Tag, Typography } from "@arco-design/web-react";
 import { IconCamera } from "@arco-design/web-react/icon";
+
 import BasicInfo from "./Components/BasicInfo";
 import WhetherVerifiedContainer from "./Components/WhetherVerifiedContainer";
 import { ELEMENT_ID } from "src/Core";

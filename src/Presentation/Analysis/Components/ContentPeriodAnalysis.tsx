@@ -1,6 +1,7 @@
+import { memo } from "react";
+
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 import ChartContentPeriodAnalysis from "./ChartContentPeriodAnalysis";
-import { memo } from "react";
 
 function ContentPeriodAnalysis() {
     return (

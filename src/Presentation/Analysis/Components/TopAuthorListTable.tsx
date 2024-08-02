@@ -1,5 +1,6 @@
-import { Table, TableColumnProps } from "@arco-design/web-react";
 import { memo } from "react";
+
+import { Table, TableColumnProps } from "@arco-design/web-react";
 
 function TopAuthorListTable() {
     const columns: TableColumnProps[] = [

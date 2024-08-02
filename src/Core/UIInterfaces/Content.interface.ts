@@ -1,5 +1,6 @@
 import { MockUser } from "src/Domain/Model/MockUser";
 
+// DATA CATEGORY
 export interface DataCategoryItemInterface {
     image?: string;
     label: string;

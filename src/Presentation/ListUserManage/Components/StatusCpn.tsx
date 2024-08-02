@@ -1,7 +1,9 @@
 import { Tag } from "@arco-design/web-react";
+
 import { MOCKUSERSTATUS } from "src/Core";
 import { MockUser } from "src/Domain/Model/MockUser";
 import tailwindConfig from "../../../../tailwind.config";
+
 interface Props {
     mockUser: MockUser;
 }

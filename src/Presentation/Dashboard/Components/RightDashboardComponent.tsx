@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Button, Divider, Tag, Typography } from "@arco-design/web-react";
 import {
     IconFile,
@@ -6,7 +8,7 @@ import {
     IconSettings,
     IconStorage,
 } from "@arco-design/web-react/icon";
-import { memo } from "react";
+
 import {
     RightDashboardAnnouncementInterface,
     RightDashboardButtonInterface,

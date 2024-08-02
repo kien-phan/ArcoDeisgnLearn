@@ -1,7 +1,9 @@
-import WhiteContainer from "src/Core/Components/WhiteContainer";
 import { Tabs } from "@arco-design/web-react";
+
+import WhiteContainer from "src/Core/Components/WhiteContainer";
 import AllCardList from "./Components/AllCardList";
 import SearchCard from "./Components/SearchCard";
+
 const TabPane = Tabs.TabPane;
 
 function ListCardContainer() {

@@ -1,5 +1,6 @@
-import { DonutChart } from "bizcharts";
 import { memo } from "react";
+
+import { DonutChart } from "bizcharts";
 
 const ChartContentCategory = () => {
     const data = [

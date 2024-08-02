@@ -1,6 +1,7 @@
+import { memo } from "react";
+
 import WhiteContainer from "src/Core/Components/WhiteContainer";
 import ChartContentPublisingRate from "./ChartContentPublisingRate";
-import { memo } from "react";
 
 function ContentPublisingRate() {
     return (
